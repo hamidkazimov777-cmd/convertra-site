@@ -1,15 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffbf57"/>
-      <stop offset="1" stop-color="#cf7d1c"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#212226"/>
+      <stop offset="0.5" stop-color="#141518"/>
+      <stop offset="1" stop-color="#0a0b0d"/>
     </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#c2c6ca"/>
+    </linearGradient>
+    <filter id="gg" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#8BE06A" flood-opacity="0.45"/>
+    </filter>
   </defs>
-  <rect width="512" height="512" rx="96" fill="url(#g)"/>
-  <g fill="none" stroke="#17110a" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M150 256a106 106 0 0 1 181-75l30 30"/>
-    <path d="M361 145v66h-66"/>
-    <path d="M362 256a106 106 0 0 1-181 75l-30-30"/>
-    <path d="M151 367v-66h66"/>
-  </g>
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#bg)"/>
+  <rect x="3" y="3" width="1018" height="1018" rx="228" ry="228" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="3"/>
+  <g><rect x="135" y="447" width="30" height="130" rx="15" fill="url(#wave)" opacity="0.95"/><rect x="181" y="397" width="30" height="230" rx="15" fill="url(#wave)" opacity="0.95"/><rect x="227" y="347" width="30" height="330" rx="15" fill="url(#wave)" opacity="0.95"/><rect x="273" y="297" width="30" height="430" rx="15" fill="url(#wave)" opacity="0.95"/><rect x="319" y="347" width="30" height="330" rx="15" fill="url(#wave)" opacity="0.95"/><rect x="365" y="402" width="30" height="220" rx="15" fill="url(#wave)" opacity="0.95"/><rect x="411" y="437" width="30" height="150" rx="15" fill="url(#wave)" opacity="0.95"/></g>
+  <g filter="url(#gg)"><rect x="474" y="498" width="46" height="28" rx="14" fill="#8BE06A"/><circle cx="556" cy="380" r="15" fill="#8BE06A"/><circle cx="556" cy="424" r="15" fill="#8BE06A"/><circle cx="556" cy="468" r="15" fill="#8BE06A"/><circle cx="556" cy="512" r="15" fill="#8BE06A"/><circle cx="556" cy="556" r="15" fill="#8BE06A"/><circle cx="556" cy="600" r="15" fill="#8BE06A"/><circle cx="556" cy="644" r="15" fill="#8BE06A"/><circle cx="600" cy="380" r="15" fill="#8BE06A"/><circle cx="600" cy="424" r="15" fill="#8BE06A"/><circle cx="600" cy="468" r="15" fill="#8BE06A"/><circle cx="600" cy="512" r="15" fill="#8BE06A"/><circle cx="600" cy="556" r="15" fill="#8BE06A"/><circle cx="600" cy="600" r="15" fill="#8BE06A"/><circle cx="600" cy="644" r="15" fill="#8BE06A"/><circle cx="644" cy="424" r="15" fill="#8BE06A"/><circle cx="644" cy="468" r="15" fill="#8BE06A"/><circle cx="644" cy="512" r="15" fill="#8BE06A"/><circle cx="644" cy="556" r="15" fill="#8BE06A"/><circle cx="644" cy="600" r="15" fill="#8BE06A"/><circle cx="688" cy="468" r="15" fill="#8BE06A"/><circle cx="688" cy="512" r="15" fill="#8BE06A"/><circle cx="688" cy="556" r="15" fill="#8BE06A"/><circle cx="732" cy="512" r="15" fill="#8BE06A"/></g>
 </svg>

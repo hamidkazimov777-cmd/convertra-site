@@ -14,16 +14,16 @@ const svg = `
       <stop offset="1" stop-color="#08090c"/>
     </linearGradient>
     <linearGradient id="v" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffbf57"/>
-      <stop offset="1" stop-color="#cf7d1c"/>
+      <stop offset="0" stop-color="#4ade80"/>
+      <stop offset="1" stop-color="#228b49"/>
     </linearGradient>
     <linearGradient id="txt" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffffff"/>
       <stop offset="1" stop-color="#c7c9d9"/>
     </linearGradient>
     <radialGradient id="glow" cx="82%" cy="6%" r="60%">
-      <stop offset="0" stop-color="#f0a02a" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#f0a02a" stop-opacity="0"/>
+      <stop offset="0" stop-color="#31b465" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#31b465" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
@@ -41,11 +41,11 @@ const svg = `
   <text x="80" y="290" font-family="Inter, sans-serif" font-size="72" font-weight="700" fill="url(#txt)" letter-spacing="-3">Convertra AudioCore</text>
   <text x="80" y="360" font-family="Inter, sans-serif" font-size="34" font-weight="500" fill="#a3a4ab">On-device DSP for key, tempo &amp; Camelot detection</text>
   <g font-family="Inter, sans-serif">
-    <text x="80" y="500" font-size="60" font-weight="700" fill="#ffbf57">~70%</text>
+    <text x="80" y="500" font-size="60" font-weight="700" fill="#4ade80">~70%</text>
     <text x="80" y="540" font-size="24" fill="#a3a4ab">Exact Camelot</text>
     <text x="360" y="500" font-size="60" font-weight="700" fill="#8ed86a">~83%</text>
     <text x="360" y="540" font-size="24" fill="#a3a4ab">Harmonic match</text>
-    <text x="640" y="500" font-size="60" font-weight="700" fill="#efa831">~82%</text>
+    <text x="640" y="500" font-size="60" font-weight="700" fill="#22c55e">~82%</text>
     <text x="640" y="540" font-size="24" fill="#a3a4ab">BPM ±0.5</text>
     <text x="900" y="500" font-size="60" font-weight="700" fill="#fafafa">~1s</text>
     <text x="900" y="540" font-size="24" fill="#a3a4ab">Per track</text>
