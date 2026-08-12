@@ -2,11 +2,10 @@
 import { Image } from 'astro:assets';
 import { t } from '../data/i18n';
 import { inquiries } from '../data/site';
-import libraryImg from '../assets/app-library-dark.webp';
+import libraryImg from '../assets/app-library-dark.png';
+import libraryLightImg from '../assets/app-library-light.png';
 import metadataImg from '../assets/app-metadata.png';
-import conversionImg from '../assets/app-conversion.png';
-import duplicatesImg from '../assets/app-duplicates.webp';
-import settingsImg from '../assets/app-settings.webp';
+import settingsImg from '../assets/app-settings.png';
 
 const features = [
   ['show.library.title', 'show.library.body'],
@@ -16,9 +15,8 @@ const features = [
 
 const gallery = [
   [metadataImg, 'show.caption.metadata'],
-  [conversionImg, 'show.caption.conversion'],
-  [duplicatesImg, 'show.caption.duplicates'],
   [settingsImg, 'show.caption.settings'],
+  [libraryLightImg, 'show.caption.light'],
 ] as const;
 ---
 

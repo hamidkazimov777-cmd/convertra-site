@@ -154,6 +154,7 @@ const en: Dict = {
   'show.caption.conversion': 'Convertra — batch conversion queue',
   'show.caption.duplicates': 'Convertra — duplicate detection across the library',
   'show.caption.settings': 'Convertra — conversion & library settings',
+  'show.caption.light': 'Convertra — light & dark themes',
 
   // ---- comparison ----
   'cmp.eyebrow': 'Category context',
@@ -404,6 +405,7 @@ const ru: Dict = {
   'show.caption.conversion': 'Convertra — очередь пакетной конвертации',
   'show.caption.duplicates': 'Convertra — поиск дубликатов по всей библиотеке',
   'show.caption.settings': 'Convertra — настройки конвертации и библиотеки',
+  'show.caption.light': 'Convertra — светлая и тёмная темы',
 
   'cmp.eyebrow': 'Отраслевой контекст',
   'cmp.title': 'Где находится AudioCore',
@@ -647,6 +649,7 @@ const es: Dict = {
   'show.caption.conversion': 'Convertra — cola de conversión por lotes',
   'show.caption.duplicates': 'Convertra — detección de duplicados en la biblioteca',
   'show.caption.settings': 'Convertra — ajustes de conversión y biblioteca',
+  'show.caption.light': 'Convertra — temas claro y oscuro',
 
   'cmp.eyebrow': 'Contexto de categoría',
   'cmp.title': 'Dónde encaja AudioCore',
