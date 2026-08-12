@@ -4,6 +4,8 @@
 
 **The marketing & distribution site for Convertra**
 
+🌐 **Live:** [convertra.pages.dev](https://convertra.pages.dev/#top)
+
 [![Astro](https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)]()
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?style=flat-square&logo=cloudflare&logoColor=white)]()
 
