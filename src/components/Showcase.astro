@@ -1,15 +1,24 @@
 ---
 import { Image } from 'astro:assets';
 import { t } from '../data/i18n';
-import libraryImg from '../assets/app-library.png';
+import libraryImg from '../assets/app-library-dark.webp';
 import metadataImg from '../assets/app-metadata.png';
 import conversionImg from '../assets/app-conversion.png';
+import duplicatesImg from '../assets/app-duplicates.webp';
+import settingsImg from '../assets/app-settings.webp';
 
 const features = [
   ['show.library.title', 'show.library.body'],
   ['show.metadata.title', 'show.metadata.body'],
   ['show.conversion.title', 'show.conversion.body'],
 ];
+
+const gallery = [
+  [metadataImg, 'show.caption.metadata'],
+  [conversionImg, 'show.caption.conversion'],
+  [duplicatesImg, 'show.caption.duplicates'],
+  [settingsImg, 'show.caption.settings'],
+] as const;
 ---
 
 <section class="section hairline-top" id="product">
@@ -28,18 +37,14 @@ const features = [
     </figure>
 
     <div class="show__grid">
-      <figure class="shot" data-reveal>
-        <div class="shot__frame">
-          <Image src={metadataImg} alt={t('show.caption.metadata')} widths={[560, 900]} sizes="(min-width: 760px) 540px, 100vw" loading="lazy" />
-        </div>
-        <figcaption class="shot__cap" data-i18n="show.caption.metadata">{t('show.caption.metadata')}</figcaption>
-      </figure>
-      <figure class="shot" data-reveal style="--d:.06s">
-        <div class="shot__frame">
-          <Image src={conversionImg} alt={t('show.caption.conversion')} widths={[560, 900]} sizes="(min-width: 760px) 540px, 100vw" loading="lazy" />
-        </div>
-        <figcaption class="shot__cap" data-i18n="show.caption.conversion">{t('show.caption.conversion')}</figcaption>
-      </figure>
+      {gallery.map(([img, cap], i) => (
+        <figure class="shot" data-reveal style={`--d:${(i % 2) * 0.06}s`}>
+          <div class="shot__frame">
+            <Image src={img} alt={t(cap)} widths={[560, 900]} sizes="(min-width: 760px) 540px, 100vw" loading="lazy" />
+          </div>
+          <figcaption class="shot__cap" data-i18n={cap}>{t(cap)}</figcaption>
+        </figure>
+      ))}
     </div>
 
     <div class="show__features">

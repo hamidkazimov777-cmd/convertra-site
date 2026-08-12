@@ -3,10 +3,10 @@ import { t } from '../data/i18n';
 import { founder, inquiries } from '../data/site';
 
 const ctas = [
-  ['contact.cta.buy.title', 'contact.cta.buy.body', inquiries.acquisition],
-  ['contact.cta.license.title', 'contact.cta.license.body', inquiries.license],
-  ['contact.cta.partner.title', 'contact.cta.partner.body', inquiries.partnership],
-  ['contact.cta.invest.title', 'contact.cta.invest.body', inquiries.investment],
+  ['contact.cta.buy.title', 'contact.cta.buy.body', inquiries.acquisition, 'acquisition'],
+  ['contact.cta.license.title', 'contact.cta.license.body', inquiries.license, 'license'],
+  ['contact.cta.partner.title', 'contact.cta.partner.body', inquiries.partnership, 'partnership'],
+  ['contact.cta.invest.title', 'contact.cta.invest.body', inquiries.investment, 'investment'],
 ];
 
 const channels = [
@@ -26,8 +26,8 @@ const channels = [
     </div>
 
     <div class="ct__ctas">
-      {ctas.map(([title, body, href], i) => (
-        <a class="card ct__cta" href={href} data-reveal style={`--d:${i * 0.05}s`}>
+      {ctas.map(([title, body, href, inq], i) => (
+        <a class="card ct__cta js-cta" data-inquiry={inq} href={href} data-reveal style={`--d:${i * 0.05}s`}>
           <h3 class="ct__ctaTitle" data-i18n={title}>{t(title)}</h3>
           <p class="ct__ctaBody" data-i18n={body}>{t(body)}</p>
           <span class="ct__arrow" aria-hidden="true">

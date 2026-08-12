@@ -11,6 +11,7 @@ import Founder from '../components/Founder.astro';
 import Faq from '../components/Faq.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import ContactModal from '../components/ContactModal.astro';
 import { t } from '../data/i18n';
 ---
 
@@ -24,7 +25,7 @@ import { t } from '../data/i18n';
         <p class="trust__label" data-reveal data-i18n="trust.label">{t('trust.label')}</p>
         <div class="trust__names" data-reveal>
           <span>Mixed In Key</span>
-          <span>rekordbox</span>
+          <span>Rekordbox</span>
         </div>
         <p class="trust__disc" data-reveal data-i18n="trust.disclaimer">{t('trust.disclaimer')}</p>
       </div>
@@ -40,6 +41,7 @@ import { t } from '../data/i18n';
     <Contact />
   </main>
   <Footer />
+  <ContactModal />
 </Base>
 
 <style>

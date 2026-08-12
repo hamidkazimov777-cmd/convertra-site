@@ -37,7 +37,7 @@ const links = [
         <button type="button" data-lang="en">EN</button>
         <button type="button" data-lang="es">ES</button>
       </div>
-      <a class="btn btn-primary nav__cta" href={inquiries.license} data-i18n="nav.cta">{t('nav.cta')}</a>
+      <a class="btn btn-primary nav__cta js-cta" data-inquiry="license" href={inquiries.license} data-i18n="nav.cta">{t('nav.cta')}</a>
       <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false" data-burger>
         <span></span><span></span>
       </button>
@@ -47,7 +47,7 @@ const links = [
     {links.map(([href, key]) => (
       <a href={href} data-i18n={key}>{t(key)}</a>
     ))}
-    <a class="btn btn-primary" href={inquiries.license} data-i18n="nav.cta">{t('nav.cta')}</a>
+    <a class="btn btn-primary js-cta" data-inquiry="license" href={inquiries.license} data-i18n="nav.cta">{t('nav.cta')}</a>
   </nav>
 </header>
 

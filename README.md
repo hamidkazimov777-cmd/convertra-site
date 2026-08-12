@@ -112,6 +112,6 @@ convertra-site/
 Every metric on the site is sourced from the app's own benchmark
 (`HANDOFF.md` / `README.md` in the Convertra repo): ~70% exact Camelot, ~83% harmonic,
 ~82% BPM ±0.5, ~1 s/track (release), 100% on-device, ~336 KB universal binary,
-validated on 111 commercial tracks vs Mixed In Key. No unverified specs were invented.
+validated on 1000+ commercial tracks vs Mixed In Key. No unverified specs were invented.
 Only Mixed In Key and rekordbox are named (nominative fair use, factual context) with an
 explicit non-affiliation / trademark note; Serato and Traktor are deliberately not compared.

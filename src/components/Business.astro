@@ -3,11 +3,11 @@ import { t } from '../data/i18n';
 import { inquiries } from '../data/site';
 
 const items = [
-  ['biz.acq.title', 'biz.acq.body', 'biz.acq.cta', inquiries.acquisition, 'feature'],
-  ['biz.lic.title', 'biz.lic.body', 'biz.lic.cta', inquiries.license, 'feature'],
-  ['biz.wl.title', 'biz.wl.body', 'biz.wl.cta', inquiries.whitelabel, ''],
-  ['biz.part.title', 'biz.part.body', 'biz.part.cta', inquiries.partnership, ''],
-  ['biz.inv.title', 'biz.inv.body', 'biz.inv.cta', inquiries.investment, ''],
+  ['biz.acq.title', 'biz.acq.body', 'biz.acq.cta', inquiries.acquisition, 'feature', 'acquisition'],
+  ['biz.lic.title', 'biz.lic.body', 'biz.lic.cta', inquiries.license, 'feature', 'license'],
+  ['biz.wl.title', 'biz.wl.body', 'biz.wl.cta', inquiries.whitelabel, '', 'whitelabel'],
+  ['biz.part.title', 'biz.part.body', 'biz.part.cta', inquiries.partnership, '', 'partnership'],
+  ['biz.inv.title', 'biz.inv.body', 'biz.inv.cta', inquiries.investment, '', 'investment'],
 ];
 ---
 
@@ -20,14 +20,14 @@ const items = [
     </div>
 
     <div class="biz">
-      {items.map(([title, body, cta, href, feat], i) => (
+      {items.map(([title, body, cta, href, feat, inq], i) => (
         <article class={`card biz__card ${feat ? 'biz__card--feature' : ''}`} data-reveal style={`--d:${i * 0.05}s`}>
           <div class="biz__top">
             <h3 class="biz__title" data-i18n={title}>{t(title)}</h3>
             <span class="biz__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           </div>
           <p class="biz__body" data-i18n={body}>{t(body)}</p>
-          <a class={`biz__cta ${feat ? 'btn btn-primary' : ''}`} href={href}>
+          <a class={`biz__cta js-cta ${feat ? 'btn btn-primary' : ''}`} data-inquiry={inq} href={href}>
             <span data-i18n={cta}>{t(cta)}</span>
             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>

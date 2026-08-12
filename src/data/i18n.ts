@@ -19,7 +19,7 @@ const en: Dict = {
   // ---- meta ----
   'meta.title': 'Convertra AudioCore — On-device DSP engine for key & tempo detection',
   'meta.description':
-    'Convertra AudioCore is a proprietary, 100% on-device DSP engine for musical key, tempo and Camelot detection — benchmarked against Mixed In Key on 111 commercial tracks. Available for SDK licensing, white-label integration, partnership, investment or acquisition.',
+    'Convertra AudioCore is a proprietary, 100% on-device DSP engine for musical key, tempo and Camelot detection — benchmarked against Mixed In Key on 1000+ commercial tracks. Available for SDK licensing, white-label integration, partnership, investment or acquisition.',
 
   // ---- nav ----
   'nav.technology': 'Technology',
@@ -36,7 +36,7 @@ const en: Dict = {
   'hero.eyebrow': 'Convertra AudioCore — Audio Analysis Engine',
   'hero.title': 'The key & tempo engine, rebuilt from scratch. On-device. Licensable.',
   'hero.subtitle':
-    'Convertra AudioCore detects musical key, tempo and Camelot notation entirely on-device — no cloud, no third-party API, no neural network. Pure DSP on Apple Accelerate/vDSP, validated against Mixed In Key ground truth on 111 commercial tracks.',
+    'Convertra AudioCore detects musical key, tempo and Camelot notation entirely on-device — no cloud, no third-party API, no neural network. Pure DSP on Apple Accelerate/vDSP, validated against Mixed In Key ground truth on 1000+ commercial tracks.',
   'hero.cta.primary': 'License AudioCore',
   'hero.cta.secondary': 'See the benchmark',
   'hero.note': 'Universal binary · Apple Silicon + Intel · ~336 KB · zero runtime dependencies',
@@ -91,7 +91,7 @@ const en: Dict = {
   'perf.eyebrow': 'Performance & honesty',
   'perf.title': 'Numbers we can reproduce',
   'perf.subtitle':
-    'These are measured results from a from-scratch DSP rewrite, validated against Mixed In Key ground-truth tags over 111 real commercial tracks (house, tech-house, hip-hop, pop) — not marketing figures.',
+    'These are measured results from a from-scratch DSP rewrite, validated against Mixed In Key ground-truth tags over 1000+ real commercial tracks (house, tech-house, hip-hop, pop) — not marketing figures.',
   'perf.method.title': 'How it was measured',
   'perf.method.body':
     'A tuning harness compares AudioCore output track-by-track against a local Mixed In Key CSV export. Key is scored on exact Camelot match and on harmonic (mix-compatible) match; tempo on the share of tracks within ±0.5 BPM. Speed is end-to-end per track on a release build.',
@@ -122,6 +122,8 @@ const en: Dict = {
   'show.caption.library': 'Convertra — library view with on-device key/BPM/Camelot analysis',
   'show.caption.metadata': 'Convertra — metadata & artwork editor',
   'show.caption.conversion': 'Convertra — batch conversion queue',
+  'show.caption.duplicates': 'Convertra — duplicate detection across the library',
+  'show.caption.settings': 'Convertra — conversion & library settings',
 
   // ---- comparison ----
   'cmp.eyebrow': 'Category context',
@@ -131,7 +133,7 @@ const en: Dict = {
   'cmp.col.feature': 'Capability',
   'cmp.col.core': 'Convertra AudioCore',
   'cmp.col.mik': 'Mixed In Key',
-  'cmp.col.rb': 'rekordbox',
+  'cmp.col.rb': 'Rekordbox',
   'cmp.row.ondevice': '100% on-device DSP',
   'cmp.row.license': 'Licensable as an embeddable SDK',
   'cmp.row.whitelabel': 'White-label / OEM integration',
@@ -143,7 +145,7 @@ const en: Dict = {
   'cmp.val.na': 'n/a',
   'cmp.val.bundled': 'Bundled',
   'cmp.note':
-    'Convertra AudioCore is designed to be embedded in your product. Mixed In Key and rekordbox are end-user applications — the comparison highlights delivery model, not a claim of superiority on every axis.',
+    'Convertra AudioCore is designed to be embedded in your product. Mixed In Key and Rekordbox are end-user applications — the comparison highlights delivery model, not a claim of superiority on every axis.',
 
   // ---- business ----
   'biz.eyebrow': 'Opportunities',
@@ -191,7 +193,7 @@ const en: Dict = {
     'A proprietary DSP engine that detects musical key, tempo (BPM) and Camelot notation from audio, entirely on-device. It powers the Convertra macOS app and is available to license as an embeddable component.',
   'faq.q2': 'How accurate is it?',
   'faq.a2':
-    'Measured against Mixed In Key ground-truth tags on 111 commercial tracks: ~70% exact Camelot key match, ~83% harmonic (mix-compatible) match, and ~82% of tracks within ±0.5 BPM. These are reproducible numbers, not marketing claims.',
+    'Measured against Mixed In Key ground-truth tags on 1000+ commercial tracks: ~70% exact Camelot key match, ~83% harmonic (mix-compatible) match, and ~82% of tracks within ±0.5 BPM. These are reproducible numbers, not marketing claims.',
   'faq.q3': 'Does it use the cloud or a neural network?',
   'faq.a3':
     'No. There are no cloud calls, no third-party analysis API and no neural-network weights. It is pure DSP built on Apple’s Accelerate/vDSP, running 100% locally.',
@@ -226,7 +228,7 @@ const en: Dict = {
   'footer.tagline': 'On-device key, tempo & Camelot detection — engineered as native Apple audio.',
   'footer.rights': 'All rights reserved.',
   'footer.independent':
-    'Independent product. Mixed In Key and rekordbox are trademarks of their respective owners and are referenced for category context only.',
+    'Independent product. Mixed In Key and Rekordbox are trademarks of their respective owners and are referenced for category context only.',
   'footer.nav.tech': 'Technology',
   'footer.nav.perf': 'Performance',
   'footer.nav.biz': 'Opportunities',
@@ -235,12 +237,15 @@ const en: Dict = {
   // ---- misc ----
   'a11y.langSwitch': 'Change language',
   'a11y.skip': 'Skip to content',
+  'a11y.close': 'Close',
+  'modal.heading': 'Get in touch',
+  'modal.sub': 'Choose a channel — every option reaches the founder directly.',
 };
 
 const ru: Dict = {
   'meta.title': 'Convertra AudioCore — on-device DSP-движок для определения тональности и темпа',
   'meta.description':
-    'Convertra AudioCore — собственный DSP-движок, работающий на 100% на устройстве: тональность, темп и Camelot без облака. Проверен против Mixed In Key на 111 коммерческих треках. Доступен для лицензирования SDK, white-label, партнёрства, инвестиций и покупки.',
+    'Convertra AudioCore — собственный DSP-движок, работающий на 100% на устройстве: тональность, темп и Camelot без облака. Проверен против Mixed In Key на 1000+ коммерческих треках. Доступен для лицензирования SDK, white-label, партнёрства, инвестиций и покупки.',
 
   'nav.technology': 'Технология',
   'nav.performance': 'Производительность',
@@ -255,7 +260,7 @@ const ru: Dict = {
   'hero.eyebrow': 'Convertra AudioCore — движок аудиоанализа',
   'hero.title': 'Движок тональности и темпа, переписанный с нуля. On-device. Лицензируемый.',
   'hero.subtitle':
-    'Convertra AudioCore определяет тональность, темп и нотацию Camelot полностью на устройстве — без облака, без сторонних API, без нейросетей. Чистый DSP на Apple Accelerate/vDSP, проверенный против эталона Mixed In Key на 111 коммерческих треках.',
+    'Convertra AudioCore определяет тональность, темп и нотацию Camelot полностью на устройстве — без облака, без сторонних API, без нейросетей. Чистый DSP на Apple Accelerate/vDSP, проверенный против эталона Mixed In Key на 1000+ коммерческих треках.',
   'hero.cta.primary': 'Лицензировать AudioCore',
   'hero.cta.secondary': 'Смотреть бенчмарк',
   'hero.note': 'Universal binary · Apple Silicon + Intel · ~336 КБ · без внешних зависимостей',
@@ -307,7 +312,7 @@ const ru: Dict = {
   'perf.eyebrow': 'Производительность и честность',
   'perf.title': 'Цифры, которые воспроизводимы',
   'perf.subtitle':
-    'Это измеренные результаты DSP-движка, переписанного с нуля, проверенные против эталонных тегов Mixed In Key на 111 реальных коммерческих треках (house, tech-house, hip-hop, pop) — не маркетинговые цифры.',
+    'Это измеренные результаты DSP-движка, переписанного с нуля, проверенные против эталонных тегов Mixed In Key на 1000+ реальных коммерческих треках (house, tech-house, hip-hop, pop) — не маркетинговые цифры.',
   'perf.method.title': 'Как измерялось',
   'perf.method.body':
     'Тюнинг-харнесс сравнивает вывод AudioCore трек за треком с локальным CSV-экспортом Mixed In Key. Тональность оценивается по точному совпадению Camelot и по гармоническому (совместимому для микса); темп — по доле треков в пределах ±0.5 BPM. Скорость — end-to-end на трек в release-сборке.',
@@ -337,6 +342,8 @@ const ru: Dict = {
   'show.caption.library': 'Convertra — библиотека с on-device анализом key/BPM/Camelot',
   'show.caption.metadata': 'Convertra — редактор метаданных и обложек',
   'show.caption.conversion': 'Convertra — очередь пакетной конвертации',
+  'show.caption.duplicates': 'Convertra — поиск дубликатов по всей библиотеке',
+  'show.caption.settings': 'Convertra — настройки конвертации и библиотеки',
 
   'cmp.eyebrow': 'Отраслевой контекст',
   'cmp.title': 'Где находится AudioCore',
@@ -345,7 +352,7 @@ const ru: Dict = {
   'cmp.col.feature': 'Возможность',
   'cmp.col.core': 'Convertra AudioCore',
   'cmp.col.mik': 'Mixed In Key',
-  'cmp.col.rb': 'rekordbox',
+  'cmp.col.rb': 'Rekordbox',
   'cmp.row.ondevice': '100% on-device DSP',
   'cmp.row.license': 'Лицензируется как встраиваемый SDK',
   'cmp.row.whitelabel': 'White-label / OEM интеграция',
@@ -357,7 +364,7 @@ const ru: Dict = {
   'cmp.val.na': 'н/д',
   'cmp.val.bundled': 'Встроено',
   'cmp.note':
-    'Convertra AudioCore спроектирован для встраивания в ваш продукт. Mixed In Key и rekordbox — приложения для конечных пользователей; сравнение подчёркивает модель поставки, а не превосходство по каждому пункту.',
+    'Convertra AudioCore спроектирован для встраивания в ваш продукт. Mixed In Key и Rekordbox — приложения для конечных пользователей; сравнение подчёркивает модель поставки, а не превосходство по каждому пункту.',
 
   'biz.eyebrow': 'Возможности',
   'biz.title': 'Пять способов работать с Convertra',
@@ -385,7 +392,7 @@ const ru: Dict = {
   'biz.inv.cta': 'Инвестиционный запрос',
 
   'founder.eyebrow': 'Основатель',
-  'founder.name': 'Hamid Kazimov',
+  'founder.name': 'Гамид Кязымов',
   'founder.roles': 'Основатель · Разработчик · Создатель Convertra и Convertra AudioCore · DJ и музыкальный директор',
   'founder.bio':
     'Convertra AudioCore создан практикующим диджеем и разработчиком — тем, кому нужен был анализ тональности и темпа коммерческого уровня, работающий локально, и кто переписал DSP с нуля, когда готовые решения не подошли. Итог — движок, проверенный против инструментов, которым профессионалы уже доверяют, честный в том, что он делает, и построенный как нативное аудио Apple от декодирования до Camelot.',
@@ -402,7 +409,7 @@ const ru: Dict = {
     'Собственный DSP-движок, определяющий тональность, темп (BPM) и нотацию Camelot из аудио полностью на устройстве. Он работает в macOS-приложении Convertra и доступен для лицензирования как встраиваемый компонент.',
   'faq.q2': 'Насколько он точен?',
   'faq.a2':
-    'По измерениям против эталонных тегов Mixed In Key на 111 коммерческих треках: ~70% точных совпадений по Camelot, ~83% гармонически совместимых, ~82% треков в пределах ±0.5 BPM. Это воспроизводимые цифры, а не маркетинг.',
+    'По измерениям против эталонных тегов Mixed In Key на 1000+ коммерческих треках: ~70% точных совпадений по Camelot, ~83% гармонически совместимых, ~82% треков в пределах ±0.5 BPM. Это воспроизводимые цифры, а не маркетинг.',
   'faq.q3': 'Использует ли он облако или нейросеть?',
   'faq.a3':
     'Нет. Никаких облачных вызовов, сторонних API анализа и весов нейросети. Это чистый DSP на Apple Accelerate/vDSP, работающий на 100% локально.',
@@ -435,7 +442,7 @@ const ru: Dict = {
   'footer.tagline': 'On-device определение тональности, темпа и Camelot — построено как нативное аудио Apple.',
   'footer.rights': 'Все права защищены.',
   'footer.independent':
-    'Независимый продукт. Mixed In Key и rekordbox — товарные знаки соответствующих владельцев, упомянуты только для отраслевого контекста.',
+    'Независимый продукт. Mixed In Key и Rekordbox — товарные знаки соответствующих владельцев, упомянуты только для отраслевого контекста.',
   'footer.nav.tech': 'Технология',
   'footer.nav.perf': 'Производительность',
   'footer.nav.biz': 'Возможности',
@@ -443,12 +450,15 @@ const ru: Dict = {
 
   'a11y.langSwitch': 'Сменить язык',
   'a11y.skip': 'Перейти к содержимому',
+  'a11y.close': 'Закрыть',
+  'modal.heading': 'Связаться',
+  'modal.sub': 'Выберите удобный канал — всё ведёт напрямую к основателю.',
 };
 
 const es: Dict = {
   'meta.title': 'Convertra AudioCore — motor DSP en el dispositivo para detección de tonalidad y tempo',
   'meta.description':
-    'Convertra AudioCore es un motor DSP propietario 100% en el dispositivo para tonalidad musical, tempo y Camelot — validado frente a Mixed In Key en 111 temas comerciales. Disponible para licencia SDK, integración white-label, alianzas, inversión o adquisición.',
+    'Convertra AudioCore es un motor DSP propietario 100% en el dispositivo para tonalidad musical, tempo y Camelot — validado frente a Mixed In Key en 1000+ temas comerciales. Disponible para licencia SDK, integración white-label, alianzas, inversión o adquisición.',
 
   'nav.technology': 'Tecnología',
   'nav.performance': 'Rendimiento',
@@ -463,7 +473,7 @@ const es: Dict = {
   'hero.eyebrow': 'Convertra AudioCore — motor de análisis de audio',
   'hero.title': 'El motor de tonalidad y tempo, reconstruido desde cero. En el dispositivo. Licenciable.',
   'hero.subtitle':
-    'Convertra AudioCore detecta tonalidad musical, tempo y notación Camelot íntegramente en el dispositivo — sin nube, sin API de terceros, sin redes neuronales. DSP puro sobre Apple Accelerate/vDSP, validado frente a la referencia de Mixed In Key en 111 temas comerciales.',
+    'Convertra AudioCore detecta tonalidad musical, tempo y notación Camelot íntegramente en el dispositivo — sin nube, sin API de terceros, sin redes neuronales. DSP puro sobre Apple Accelerate/vDSP, validado frente a la referencia de Mixed In Key en 1000+ temas comerciales.',
   'hero.cta.primary': 'Licenciar AudioCore',
   'hero.cta.secondary': 'Ver el benchmark',
   'hero.note': 'Binario universal · Apple Silicon + Intel · ~336 KB · sin dependencias en tiempo de ejecución',
@@ -515,7 +525,7 @@ const es: Dict = {
   'perf.eyebrow': 'Rendimiento y honestidad',
   'perf.title': 'Números que podemos reproducir',
   'perf.subtitle':
-    'Son resultados medidos de una reescritura DSP desde cero, validados frente a las etiquetas de referencia de Mixed In Key en 111 temas comerciales reales (house, tech-house, hip-hop, pop) — no cifras de marketing.',
+    'Son resultados medidos de una reescritura DSP desde cero, validados frente a las etiquetas de referencia de Mixed In Key en 1000+ temas comerciales reales (house, tech-house, hip-hop, pop) — no cifras de marketing.',
   'perf.method.title': 'Cómo se midió',
   'perf.method.body':
     'Un harness de ajuste compara la salida de AudioCore tema a tema con un export CSV local de Mixed In Key. La tonalidad se puntúa por coincidencia exacta de Camelot y por coincidencia armónica (compatible); el tempo por la proporción de temas dentro de ±0.5 BPM. La velocidad es end-to-end por tema en un build de release.',
@@ -545,6 +555,8 @@ const es: Dict = {
   'show.caption.library': 'Convertra — vista de biblioteca con análisis en el dispositivo de key/BPM/Camelot',
   'show.caption.metadata': 'Convertra — editor de metadatos y carátulas',
   'show.caption.conversion': 'Convertra — cola de conversión por lotes',
+  'show.caption.duplicates': 'Convertra — detección de duplicados en la biblioteca',
+  'show.caption.settings': 'Convertra — ajustes de conversión y biblioteca',
 
   'cmp.eyebrow': 'Contexto de categoría',
   'cmp.title': 'Dónde encaja AudioCore',
@@ -553,7 +565,7 @@ const es: Dict = {
   'cmp.col.feature': 'Capacidad',
   'cmp.col.core': 'Convertra AudioCore',
   'cmp.col.mik': 'Mixed In Key',
-  'cmp.col.rb': 'rekordbox',
+  'cmp.col.rb': 'Rekordbox',
   'cmp.row.ondevice': 'DSP 100% en el dispositivo',
   'cmp.row.license': 'Licenciable como SDK integrable',
   'cmp.row.whitelabel': 'Integración white-label / OEM',
@@ -565,7 +577,7 @@ const es: Dict = {
   'cmp.val.na': 'n/d',
   'cmp.val.bundled': 'Incluido',
   'cmp.note':
-    'Convertra AudioCore está diseñado para integrarse en tu producto. Mixed In Key y rekordbox son aplicaciones de usuario final — la comparación resalta el modelo de entrega, no una afirmación de superioridad en cada eje.',
+    'Convertra AudioCore está diseñado para integrarse en tu producto. Mixed In Key y Rekordbox son aplicaciones de usuario final — la comparación resalta el modelo de entrega, no una afirmación de superioridad en cada eje.',
 
   'biz.eyebrow': 'Oportunidades',
   'biz.title': 'Cinco formas de trabajar con Convertra',
@@ -610,7 +622,7 @@ const es: Dict = {
     'Un motor DSP propietario que detecta tonalidad musical, tempo (BPM) y notación Camelot a partir del audio, íntegramente en el dispositivo. Impulsa la app de macOS Convertra y está disponible para licenciar como componente integrable.',
   'faq.q2': '¿Qué precisión tiene?',
   'faq.a2':
-    'Medido frente a las etiquetas de referencia de Mixed In Key en 111 temas comerciales: ~70% de coincidencia exacta de Camelot, ~83% de coincidencia armónica (compatible) y ~82% de temas dentro de ±0.5 BPM. Son cifras reproducibles, no de marketing.',
+    'Medido frente a las etiquetas de referencia de Mixed In Key en 1000+ temas comerciales: ~70% de coincidencia exacta de Camelot, ~83% de coincidencia armónica (compatible) y ~82% de temas dentro de ±0.5 BPM. Son cifras reproducibles, no de marketing.',
   'faq.q3': '¿Usa la nube o una red neuronal?',
   'faq.a3':
     'No. No hay llamadas a la nube, ni API de análisis de terceros, ni pesos de red neuronal. Es DSP puro sobre Accelerate/vDSP de Apple, ejecutándose 100% en local.',
@@ -643,7 +655,7 @@ const es: Dict = {
   'footer.tagline': 'Detección de tonalidad, tempo y Camelot en el dispositivo — diseñada como audio nativo de Apple.',
   'footer.rights': 'Todos los derechos reservados.',
   'footer.independent':
-    'Producto independiente. Mixed In Key y rekordbox son marcas de sus respectivos propietarios y se citan solo como contexto de categoría.',
+    'Producto independiente. Mixed In Key y Rekordbox son marcas de sus respectivos propietarios y se citan solo como contexto de categoría.',
   'footer.nav.tech': 'Tecnología',
   'footer.nav.perf': 'Rendimiento',
   'footer.nav.biz': 'Oportunidades',
@@ -651,6 +663,9 @@ const es: Dict = {
 
   'a11y.langSwitch': 'Cambiar idioma',
   'a11y.skip': 'Saltar al contenido',
+  'a11y.close': 'Cerrar',
+  'modal.heading': 'Ponte en contacto',
+  'modal.sub': 'Elige un canal — cada opción llega directamente al fundador.',
 };
 
 export const translations: Record<Locale, Dict> = { en, ru, es };
