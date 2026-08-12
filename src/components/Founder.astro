@@ -27,7 +27,7 @@ const icons: Record<string, string> = {
       <div class="founder__aside" data-reveal>
         <span class="eyebrow" data-i18n="founder.eyebrow">{t('founder.eyebrow')}</span>
         <div class="founder__avatar">
-          <Image src={founderPhoto} alt={founder.name} widths={[240, 480]} sizes="240px" loading="lazy" />
+          <Image src={founderPhoto} alt={founder.name} widths={[240, 380, 480]} sizes="200px" loading="lazy" />
         </div>
       </div>
       <div class="founder__main" data-reveal style="--d:.06s">
@@ -51,22 +51,24 @@ const icons: Record<string, string> = {
   .founder { display: grid; grid-template-columns: 1fr; gap: 34px; }
   .founder__avatar {
     margin-top: 20px;
-    width: 100%; max-width: 220px;
-    aspect-ratio: 4 / 5;
-    border-radius: 22px;
+    width: 100%; max-width: 190px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: 0 24px 50px -20px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,255,255,0.08);
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 24px 50px -20px rgba(0,0,0,0.75), 0 0 0 6px rgba(103,108,244,0.10), inset 0 1px 0 rgba(255,255,255,0.08);
     position: relative;
   }
   .founder__avatar::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 55%, rgba(103,108,244,0.22));
+    content: ''; position: absolute; inset: 0; border-radius: 50%;
+    background: linear-gradient(180deg, transparent 62%, rgba(11,12,15,0.35));
     pointer-events: none;
   }
   .founder__avatar :global(img) {
-    width: 100%; height: 100%; object-fit: cover; object-position: center 22%;
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
     display: block;
+    transform: scale(1.55);
+    transform-origin: center 20%;
   }
   .founder__name { font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.03em; }
   .founder__roles { margin-top: 10px; color: var(--accent-muted); font-size: 0.95rem; font-weight: 500; }

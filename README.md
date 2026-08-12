@@ -1,9 +1,14 @@
-# Convertra AudioCore — website
+# Convertra — website
 
-Production landing & licensing site for **Convertra AudioCore**, the on-device DSP
-engine for musical key, tempo and Camelot detection. Built to sell the *technology*
-(licensing, white-label, partnership, investment, acquisition) — not to sell an app
-download.
+Production marketing site for the **Convertra** platform — one brand, two products
+of equal weight:
+
+- **Convertra App** — a native macOS library, analysis and conversion app for DJs.
+- **Convertra AudioCore** — the on-device DSP engine for musical key, tempo and
+  Camelot detection inside the app, available to license, white-label or integrate.
+
+The site sells both: getting the app *and* licensing the engine (plus partnership,
+investment and acquisition paths). Neither product is positioned as secondary.
 
 - **Stack:** [Astro](https://astro.build) (static output), zero client framework, self-hosted Inter.
 - **Languages:** RU / EN / ES via a client-side toggle (mirrors the app), EN is the crawlable default.

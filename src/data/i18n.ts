@@ -17,11 +17,13 @@ type Dict = Record<string, string>;
 
 const en: Dict = {
   // ---- meta ----
-  'meta.title': 'Convertra AudioCore — On-device DSP engine for key & tempo detection',
+  'meta.title': 'Convertra — macOS DJ app & AudioCore key/tempo engine',
   'meta.description':
-    'Convertra AudioCore is a proprietary, 100% on-device DSP engine for musical key, tempo and Camelot detection — benchmarked against Mixed In Key on 1000+ commercial tracks. Available for SDK licensing, white-label integration, partnership, investment or acquisition.',
+    'Convertra is a DJ audio platform: a native macOS app for library management, analysis and conversion, and Convertra AudioCore — the on-device key, tempo and Camelot engine inside it, benchmarked against Mixed In Key on 1000+ tracks and available to license, white-label or integrate.',
 
   // ---- nav ----
+  'nav.app': 'App',
+  'nav.audiocore': 'AudioCore',
   'nav.technology': 'Technology',
   'nav.performance': 'Performance',
   'nav.product': 'Product',
@@ -30,16 +32,22 @@ const en: Dict = {
   'nav.founder': 'Founder',
   'nav.faq': 'FAQ',
   'nav.contact': 'Contact',
-  'nav.cta': 'License AudioCore',
+  'nav.cta': 'Get started',
 
   // ---- hero ----
-  'hero.eyebrow': 'Convertra AudioCore — Audio Analysis Engine',
-  'hero.title': 'The key & tempo engine, rebuilt from scratch. On-device. Licensable.',
+  'hero.eyebrow': 'Convertra — DJ audio platform',
+  'hero.title': 'A native macOS app for DJs — and the on-device engine that powers it.',
   'hero.subtitle':
-    'Convertra AudioCore detects musical key, tempo and Camelot notation entirely on-device — no cloud, no third-party API, no neural network. Pure DSP on Apple Accelerate/vDSP, validated against Mixed In Key ground truth on 1000+ commercial tracks.',
+    'Convertra is two products, one brand. Convertra App organises, analyses and converts a DJ’s whole library on macOS. Convertra AudioCore is the on-device key, tempo and Camelot engine inside it — validated against Mixed In Key on 1000+ commercial tracks, and available to license.',
   'hero.cta.primary': 'License AudioCore',
-  'hero.cta.secondary': 'See the benchmark',
-  'hero.note': 'Universal binary · Apple Silicon + Intel · ~336 KB · zero runtime dependencies',
+  'hero.cta.secondary': 'Get Convertra App',
+  'hero.note': 'Native macOS app · Apple Silicon + Intel · AudioCore engine · ~336 KB, zero runtime dependencies',
+  'cta.license': 'License AudioCore',
+  'cta.getapp': 'Get Convertra App',
+  'cta.explore': 'Explore Audio Technology',
+  'cta.partner': 'Become a Partner',
+  'cta.integrate': 'Integrate AudioCore',
+  'cta.download': 'Download for macOS',
 
   // ---- metric strip ----
   'metric.key.value': '~70%',
@@ -56,6 +64,21 @@ const en: Dict = {
   'trust.label': 'Benchmarked against the same class of technology that powers',
   'trust.disclaimer':
     'Comparison names are referenced for category context only. Convertra is independent and not affiliated with or endorsed by these products.',
+
+  'split.eyebrow': 'One platform, two products',
+  'split.title': 'Buy the app. License the engine.',
+  'split.subtitle':
+    'Convertra ships as a finished macOS app for DJs and as an embeddable engine for developers — same brand, same technology, two ways to work with it.',
+  'split.app.tag': 'For DJs',
+  'split.app.title': 'Convertra App',
+  'split.app.body':
+    'A native macOS library, analysis and conversion app — key, BPM, Camelot, metadata, duplicates and lossless-to-MP3 in one workflow.',
+  'split.app.cta': 'Get Convertra App',
+  'split.core.tag': 'For developers & companies',
+  'split.core.title': 'Convertra AudioCore',
+  'split.core.body':
+    'The on-device DSP engine behind the app — musical key, tempo and Camelot detection, delivered as a signed universal binary to embed, white-label or license.',
+  'split.core.cta': 'License AudioCore',
 
   // ---- technology ----
   'tech.eyebrow': 'Technology',
@@ -106,10 +129,11 @@ const en: Dict = {
     'No Electron, no web runtime, no cloud analysis dependency. Apple-native audio all the way down, shipped as a single universal binary.',
 
   // ---- product showcase ----
-  'show.eyebrow': 'Proof — Convertra',
-  'show.title': 'Shipping in a real product',
+  'show.eyebrow': 'Convertra App',
+  'show.title': 'The macOS app DJs run every day',
   'show.subtitle':
-    'AudioCore powers Convertra, a native macOS library, analysis and conversion app for DJs. The engine isn’t a demo — it runs in production against real DJ libraries.',
+    'A finished product in its own right: Convertra organises, analyses and converts a DJ’s entire library on macOS — key, tempo and Camelot on every track, metadata and artwork editing, duplicate detection and lossless-to-MP3 conversion. Powered by AudioCore, built for working DJs.',
+  'show.cta': 'Get Convertra App',
   'show.library.title': 'Library & analysis',
   'show.library.body':
     'Ingest thousands of tracks, each analysed for key, BPM and Camelot on-device. Colour-coded harmonic keys, sortable and searchable.',
@@ -243,10 +267,12 @@ const en: Dict = {
 };
 
 const ru: Dict = {
-  'meta.title': 'Convertra AudioCore — on-device DSP-движок для определения тональности и темпа',
+  'meta.title': 'Convertra — DJ-приложение для macOS и движок AudioCore (тональность/темп)',
   'meta.description':
-    'Convertra AudioCore — собственный DSP-движок, работающий на 100% на устройстве: тональность, темп и Camelot без облака. Проверен против Mixed In Key на 1000+ коммерческих треках. Доступен для лицензирования SDK, white-label, партнёрства, инвестиций и покупки.',
+    'Convertra — платформа для DJ-аудио: нативное macOS-приложение для библиотеки, анализа и конвертации, и Convertra AudioCore — встроенный движок определения тональности, темпа и Camelot на устройстве. Проверен против Mixed In Key на 1000+ треках; доступен для лицензирования, white-label и интеграции.',
 
+  'nav.app': 'Приложение',
+  'nav.audiocore': 'AudioCore',
   'nav.technology': 'Технология',
   'nav.performance': 'Производительность',
   'nav.product': 'Продукт',
@@ -255,15 +281,21 @@ const ru: Dict = {
   'nav.founder': 'Основатель',
   'nav.faq': 'FAQ',
   'nav.contact': 'Контакты',
-  'nav.cta': 'Лицензировать AudioCore',
+  'nav.cta': 'Начать',
 
-  'hero.eyebrow': 'Convertra AudioCore — движок аудиоанализа',
-  'hero.title': 'Движок тональности и темпа, переписанный с нуля. On-device. Лицензируемый.',
+  'hero.eyebrow': 'Convertra — платформа для DJ-аудио',
+  'hero.title': 'Нативное macOS-приложение для DJ — и движок, который его питает.',
   'hero.subtitle':
-    'Convertra AudioCore определяет тональность, темп и нотацию Camelot полностью на устройстве — без облака, без сторонних API, без нейросетей. Чистый DSP на Apple Accelerate/vDSP, проверенный против эталона Mixed In Key на 1000+ коммерческих треках.',
+    'Convertra — это два продукта под одним брендом. Приложение Convertra организует, анализирует и конвертирует всю библиотеку DJ на macOS. Convertra AudioCore — встроенный в него движок тональности, темпа и Camelot на устройстве: проверен против Mixed In Key на 1000+ треках и доступен для лицензирования.',
   'hero.cta.primary': 'Лицензировать AudioCore',
-  'hero.cta.secondary': 'Смотреть бенчмарк',
-  'hero.note': 'Universal binary · Apple Silicon + Intel · ~336 КБ · без внешних зависимостей',
+  'hero.cta.secondary': 'Получить приложение',
+  'hero.note': 'Нативное macOS-приложение · Apple Silicon + Intel · движок AudioCore · ~336 КБ, без внешних зависимостей',
+  'cta.license': 'Лицензировать AudioCore',
+  'cta.getapp': 'Получить приложение Convertra',
+  'cta.explore': 'Изучить технологию',
+  'cta.partner': 'Стать партнёром',
+  'cta.integrate': 'Интегрировать AudioCore',
+  'cta.download': 'Скачать для macOS',
 
   'metric.key.value': '~70%',
   'metric.key.label': 'Точное совпадение по Camelot',
@@ -279,6 +311,21 @@ const ru: Dict = {
   'trust.label': 'Тот же класс технологий, что стоит за',
   'trust.disclaimer':
     'Названия приведены только для отраслевого контекста. Convertra — независимый продукт и не аффилирован с указанными брендами.',
+
+  'split.eyebrow': 'Одна платформа, два продукта',
+  'split.title': 'Купите приложение. Лицензируйте движок.',
+  'split.subtitle':
+    'Convertra поставляется как готовое macOS-приложение для DJ и как встраиваемый движок для разработчиков — один бренд, одна технология, два способа работать с ней.',
+  'split.app.tag': 'Для DJ',
+  'split.app.title': 'Приложение Convertra',
+  'split.app.body':
+    'Нативное macOS-приложение для библиотеки, анализа и конвертации — тональность, BPM, Camelot, метаданные, дубликаты и lossless-в-MP3 в одном рабочем процессе.',
+  'split.app.cta': 'Получить приложение',
+  'split.core.tag': 'Для разработчиков и компаний',
+  'split.core.title': 'Convertra AudioCore',
+  'split.core.body':
+    'On-device DSP-движок за приложением — определение тональности, темпа и Camelot, поставляется как подписанный universal binary для встраивания, white-label или лицензирования.',
+  'split.core.cta': 'Лицензировать AudioCore',
 
   'tech.eyebrow': 'Технология',
   'tech.title': 'Полный конвейер анализа, а не обёртка',
@@ -326,10 +373,11 @@ const ru: Dict = {
   'perf.point.native.body':
     'Без Electron, без веб-рантайма, без облачной зависимости для анализа. Полностью нативное аудио Apple, поставляется как один universal binary.',
 
-  'show.eyebrow': 'Доказательство — Convertra',
-  'show.title': 'Работает в реальном продукте',
+  'show.eyebrow': 'Приложение Convertra',
+  'show.title': 'macOS-приложение, в котором DJ работают каждый день',
   'show.subtitle':
-    'AudioCore лежит в основе Convertra — нативного macOS-приложения для библиотеки, анализа и конвертации для диджеев. Движок — не демо: он работает в продакшене на реальных диджейских библиотеках.',
+    'Полноценный самостоятельный продукт: Convertra организует, анализирует и конвертирует всю библиотеку DJ на macOS — тональность, темп и Camelot по каждому треку, редактирование метаданных и обложек, поиск дубликатов и конвертация lossless-в-MP3. На движке AudioCore, для практикующих DJ.',
+  'show.cta': 'Получить приложение',
   'show.library.title': 'Библиотека и анализ',
   'show.library.body':
     'Импорт тысяч треков, каждый анализируется по тональности, BPM и Camelot на устройстве. Цветовая кодировка гармонических тональностей, сортировка и поиск.',
@@ -456,10 +504,12 @@ const ru: Dict = {
 };
 
 const es: Dict = {
-  'meta.title': 'Convertra AudioCore — motor DSP en el dispositivo para detección de tonalidad y tempo',
+  'meta.title': 'Convertra — app de DJ para macOS y el motor AudioCore (tonalidad/tempo)',
   'meta.description':
-    'Convertra AudioCore es un motor DSP propietario 100% en el dispositivo para tonalidad musical, tempo y Camelot — validado frente a Mixed In Key en 1000+ temas comerciales. Disponible para licencia SDK, integración white-label, alianzas, inversión o adquisición.',
+    'Convertra es una plataforma de audio para DJs: una app nativa de macOS para biblioteca, análisis y conversión, y Convertra AudioCore — el motor en el dispositivo de tonalidad, tempo y Camelot que lleva dentro. Validado frente a Mixed In Key en 1000+ temas; disponible para licenciar, white-label o integrar.',
 
+  'nav.app': 'App',
+  'nav.audiocore': 'AudioCore',
   'nav.technology': 'Tecnología',
   'nav.performance': 'Rendimiento',
   'nav.product': 'Producto',
@@ -468,15 +518,21 @@ const es: Dict = {
   'nav.founder': 'Fundador',
   'nav.faq': 'FAQ',
   'nav.contact': 'Contacto',
-  'nav.cta': 'Licenciar AudioCore',
+  'nav.cta': 'Empezar',
 
-  'hero.eyebrow': 'Convertra AudioCore — motor de análisis de audio',
-  'hero.title': 'El motor de tonalidad y tempo, reconstruido desde cero. En el dispositivo. Licenciable.',
+  'hero.eyebrow': 'Convertra — plataforma de audio para DJs',
+  'hero.title': 'Una app nativa de macOS para DJs — y el motor que la impulsa.',
   'hero.subtitle':
-    'Convertra AudioCore detecta tonalidad musical, tempo y notación Camelot íntegramente en el dispositivo — sin nube, sin API de terceros, sin redes neuronales. DSP puro sobre Apple Accelerate/vDSP, validado frente a la referencia de Mixed In Key en 1000+ temas comerciales.',
+    'Convertra son dos productos, una marca. La app Convertra organiza, analiza y convierte toda la biblioteca de un DJ en macOS. Convertra AudioCore es el motor de tonalidad, tempo y Camelot en el dispositivo que lleva dentro — validado frente a Mixed In Key en 1000+ temas y disponible para licenciar.',
   'hero.cta.primary': 'Licenciar AudioCore',
-  'hero.cta.secondary': 'Ver el benchmark',
-  'hero.note': 'Binario universal · Apple Silicon + Intel · ~336 KB · sin dependencias en tiempo de ejecución',
+  'hero.cta.secondary': 'Obtener la app',
+  'hero.note': 'App nativa de macOS · Apple Silicon + Intel · motor AudioCore · ~336 KB, sin dependencias',
+  'cta.license': 'Licenciar AudioCore',
+  'cta.getapp': 'Obtener Convertra App',
+  'cta.explore': 'Explorar la tecnología',
+  'cta.partner': 'Ser socio',
+  'cta.integrate': 'Integrar AudioCore',
+  'cta.download': 'Descargar para macOS',
 
   'metric.key.value': '~70%',
   'metric.key.label': 'Coincidencia exacta de Camelot',
@@ -492,6 +548,21 @@ const es: Dict = {
   'trust.label': 'La misma clase de tecnología que impulsa a',
   'trust.disclaimer':
     'Los nombres se citan solo como contexto de categoría. Convertra es independiente y no está afiliado ni respaldado por estos productos.',
+
+  'split.eyebrow': 'Una plataforma, dos productos',
+  'split.title': 'Compra la app. Licencia el motor.',
+  'split.subtitle':
+    'Convertra se entrega como app de macOS terminada para DJs y como motor integrable para desarrolladores — misma marca, misma tecnología, dos formas de usarla.',
+  'split.app.tag': 'Para DJs',
+  'split.app.title': 'Convertra App',
+  'split.app.body':
+    'Una app nativa de macOS de biblioteca, análisis y conversión — tonalidad, BPM, Camelot, metadatos, duplicados y lossless a MP3 en un solo flujo.',
+  'split.app.cta': 'Obtener la app',
+  'split.core.tag': 'Para desarrolladores y empresas',
+  'split.core.title': 'Convertra AudioCore',
+  'split.core.body':
+    'El motor DSP en el dispositivo detrás de la app — detección de tonalidad, tempo y Camelot, entregado como binario universal firmado para integrar, white-label o licenciar.',
+  'split.core.cta': 'Licenciar AudioCore',
 
   'tech.eyebrow': 'Tecnología',
   'tech.title': 'Un pipeline de análisis completo, no un wrapper',
@@ -539,10 +610,11 @@ const es: Dict = {
   'perf.point.native.body':
     'Sin Electron, sin runtime web, sin dependencia de análisis en la nube. Audio nativo de Apple de principio a fin, entregado como un único binario universal.',
 
-  'show.eyebrow': 'Prueba — Convertra',
-  'show.title': 'En producción en un producto real',
+  'show.eyebrow': 'Convertra App',
+  'show.title': 'La app de macOS que los DJs usan a diario',
   'show.subtitle':
-    'AudioCore impulsa Convertra, una app nativa de macOS de biblioteca, análisis y conversión para DJs. El motor no es una demo: corre en producción sobre bibliotecas reales de DJs.',
+    'Un producto terminado por derecho propio: Convertra organiza, analiza y convierte toda la biblioteca de un DJ en macOS — tonalidad, tempo y Camelot en cada tema, edición de metadatos y carátulas, detección de duplicados y conversión lossless a MP3. Impulsada por AudioCore, hecha para DJs.',
+  'show.cta': 'Obtener la app',
   'show.library.title': 'Biblioteca y análisis',
   'show.library.body':
     'Importa miles de temas, cada uno analizado por tonalidad, BPM y Camelot en el dispositivo. Tonalidades armónicas con código de color, ordenables y buscables.',

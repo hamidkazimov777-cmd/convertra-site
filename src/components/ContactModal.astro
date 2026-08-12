@@ -9,6 +9,7 @@ const mailtoMap: Record<string, string> = {
   whitelabel: inquiries.whitelabel,
   partnership: inquiries.partnership,
   investment: inquiries.investment,
+  app: inquiries.app,
   general: inquiries.general,
 };
 const labelKeyMap: Record<string, string> = {
@@ -17,6 +18,7 @@ const labelKeyMap: Record<string, string> = {
   whitelabel: 'biz.wl.title',
   partnership: 'contact.cta.partner.title',
   investment: 'contact.cta.invest.title',
+  app: 'split.app.title',
   general: 'modal.heading',
 };
 
@@ -113,6 +115,9 @@ const icons: Record<string, string> = {
       setTimeout(() => { if (!modal.hidden && !modal.classList.contains('is-open')) modal.hidden = true; }, 320);
       lastFocus && lastFocus.focus && lastFocus.focus();
     }
+
+    // Expose for other components (e.g. the hero's dynamic CTA).
+    window.convertraOpenContact = open;
 
     // Open from any CTA marked with .js-cta (href stays as a no-JS fallback).
     document.querySelectorAll('.js-cta').forEach((el) => {

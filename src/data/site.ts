@@ -41,5 +41,9 @@ export const inquiries = {
     'Convertra — Investment inquiry',
     'Hi Hamid,\n\nWe are interested in investing in Convertra / AudioCore.\n\nFund / individual:\nStage / ticket:\n\nThanks,'
   ),
+  app: mailto(
+    'Convertra App — access inquiry',
+    'Hi Hamid,\n\nI would like to get the Convertra macOS app.\n\nName:\nUse case:\n\nThanks,'
+  ),
   general: mailto('Convertra AudioCore — Inquiry'),
 };
