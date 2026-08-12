@@ -37,8 +37,8 @@ const links = [
         <button type="button" data-lang="en">EN</button>
         <button type="button" data-lang="es">ES</button>
       </div>
-      <button type="button" class="btn btn-primary nav__cta nav__dyn" data-dyn-cta aria-label={t('cta.download')}>
-        <span class="nav__dyn-text" data-dyn-text data-i18n="cta.download">{t('cta.download')}</span>
+      <button type="button" class="btn btn-primary nav__cta js-cta" data-inquiry="partnership" data-i18n="cta.partner">
+        {t('cta.partner')}
       </button>
       <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false" data-burger>
         <span></span><span></span>
@@ -116,18 +116,6 @@ const links = [
   }
 
   .nav__cta { display: none; padding: 9px 16px; font-size: 0.86rem; }
-  
-  /* Dynamic CTA */
-  .nav__dyn { position: relative; overflow: hidden; min-width: 180px; }
-  .nav__dyn-text {
-    display: inline-block;
-    transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
-  }
-  .nav__dyn.is-swapping .nav__dyn-text { opacity: 0; transform: translateY(-8px); }
-  @media (prefers-reduced-motion: reduce) {
-    .nav__dyn-text { transition: none; }
-  }
 
   .nav__burger {
     display: inline-flex; flex-direction: column; gap: 5px;
@@ -177,74 +165,4 @@ const links = [
       burger?.setAttribute('aria-expanded', 'false');
     })
   );
-
-  // Dynamic CTA Logic
-  (() => {
-    const btn = document.querySelector('[data-dyn-cta]');
-    const label = document.querySelector('[data-dyn-text]');
-    if (!btn || !label) return;
-
-    const states = [
-      { key: 'cta.download', act: 'download' },
-      { key: 'cta.license', act: 'modal', arg: 'license' },
-      { key: 'cta.partner', act: 'modal', arg: 'partnership' },
-    ];
-    let i = 0;
-    let paused = false;
-
-    const tt = (key) => {
-      const el = document.getElementById('i18n-data');
-      const D = el ? JSON.parse(el.textContent || '{}') : {};
-      const loc = document.documentElement.lang || 'en';
-      return (D[loc] && D[loc][key]) || (D.en && D.en[key]) || key;
-    };
-
-    function paint(idx, animate) {
-      const s = states[idx];
-      label.setAttribute('data-i18n', s.key);
-      btn.setAttribute('aria-label', tt(s.key));
-      btn.dataset.act = s.act;
-      btn.dataset.arg = s.arg || '';
-      
-      if (s.act === 'download') {
-        btn.classList.add('js-download');
-      } else {
-        btn.classList.remove('js-download');
-      }
-
-      if (animate) {
-        btn.classList.add('is-swapping');
-        setTimeout(() => {
-          label.textContent = tt(s.key);
-          btn.classList.remove('is-swapping');
-        }, 300);
-      } else {
-        label.textContent = tt(s.key);
-      }
-    }
-
-    paint(0, false);
-
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce) {
-      setInterval(() => {
-        if (paused || document.hidden) return;
-        i = (i + 1) % states.length;
-        paint(i, true);
-      }, 4000);
-      btn.addEventListener('mouseenter', () => (paused = true));
-      btn.addEventListener('mouseleave', () => (paused = false));
-      btn.addEventListener('focus', () => (paused = true));
-      btn.addEventListener('blur', () => (paused = false));
-    }
-
-    btn.addEventListener('click', (e) => {
-      const act = btn.dataset.act;
-      const arg = btn.dataset.arg;
-      if (act === 'modal') {
-        e.preventDefault();
-        if (typeof window.convertraOpenContact === 'function') window.convertraOpenContact(arg);
-      }
-    });
-  })();
 </script>
