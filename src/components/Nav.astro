@@ -1,0 +1,166 @@
+---
+import { t } from '../data/i18n';
+import { inquiries } from '../data/site';
+const links = [
+  ['#technology', 'nav.technology'],
+  ['#performance', 'nav.performance'],
+  ['#product', 'nav.product'],
+  ['#compare', 'nav.compare'],
+  ['#opportunities', 'nav.business'],
+  ['#faq', 'nav.faq'],
+];
+---
+
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="Convertra">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8" />
+          <path d="M20 4v4h-4" />
+          <path d="M20 12a8 8 0 0 1-13.7 5.6L4 16" />
+          <path d="M4 20v-4h4" />
+        </svg>
+      </span>
+      <span class="brand__word">Convertra</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {links.map(([href, key]) => (
+        <a href={href} data-i18n={key}>{t(key)}</a>
+      ))}
+    </nav>
+
+    <div class="nav__right">
+      <div class="langswitch" role="group" data-i18n-attr="aria-label:a11y.langSwitch" aria-label="Change language">
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+      <a class="btn btn-primary nav__cta" href={inquiries.license} data-i18n="nav.cta">{t('nav.cta')}</a>
+      <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false" data-burger>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="nav__mobile" data-mobile aria-label="Mobile">
+    {links.map(([href, key]) => (
+      <a href={href} data-i18n={key}>{t(key)}</a>
+    ))}
+    <a class="btn btn-primary" href={inquiries.license} data-i18n="nav.cta">{t('nav.cta')}</a>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.is-scrolled {
+    background: rgba(9, 10, 13, 0.72);
+    backdrop-filter: saturate(160%) blur(16px);
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
+    border-bottom-color: var(--border-subtle);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 64px;
+  }
+  .brand { display: inline-flex; align-items: center; gap: 11px; }
+  .brand__mark {
+    width: 34px; height: 34px;
+    display: grid; place-items: center;
+    border-radius: 9px;
+    background: var(--grad-accent);
+    box-shadow: 0 6px 18px -6px rgba(103, 108, 244, 0.8), inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .brand__word { font-weight: 600; font-size: 1.06rem; letter-spacing: -0.02em; }
+
+  .nav__links { display: none; gap: 30px; }
+  .nav__links a {
+    font-size: 0.92rem; color: var(--text-2); font-weight: 500;
+    transition: color 0.18s ease;
+  }
+  .nav__links a:hover { color: var(--text); }
+
+  .nav__right { display: flex; align-items: center; gap: 14px; }
+
+  .langswitch {
+    display: inline-flex;
+    padding: 3px;
+    gap: 2px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+  }
+  .langswitch button {
+    border: 0; background: transparent;
+    color: var(--text-3);
+    font-size: 0.76rem; font-weight: 600; letter-spacing: 0.04em;
+    padding: 5px 10px; border-radius: var(--radius-pill);
+    transition: color 0.18s ease, background 0.18s ease;
+  }
+  .langswitch button:hover { color: var(--text-2); }
+  .langswitch button.is-active {
+    color: #fff;
+    background: rgba(103, 108, 244, 0.22);
+    box-shadow: inset 0 0 0 1px rgba(103,108,244,0.4);
+  }
+
+  .nav__cta { display: none; padding: 9px 16px; font-size: 0.86rem; }
+
+  .nav__burger {
+    display: inline-flex; flex-direction: column; gap: 5px;
+    background: transparent; border: 0; padding: 8px;
+  }
+  .nav__burger span {
+    width: 20px; height: 2px; background: var(--text); border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .nav__burger[aria-expanded='true'] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .nav__burger[aria-expanded='true'] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+  .nav__mobile {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px var(--gutter) 22px;
+    background: rgba(9, 10, 13, 0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav__mobile.is-open { display: flex; }
+  .nav__mobile a:not(.btn) {
+    padding: 12px 6px; color: var(--text-2); font-weight: 500;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav__mobile .btn { margin-top: 12px; }
+
+  @media (min-width: 900px) {
+    .nav__links { display: flex; }
+    .nav__cta { display: inline-flex; }
+    .nav__burger { display: none; }
+    .nav__mobile { display: none !important; }
+  }
+</style>
+
+<script>
+  const burger = document.querySelector('[data-burger]');
+  const mobile = document.querySelector('[data-mobile]');
+  burger?.addEventListener('click', () => {
+    const open = mobile?.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', String(!!open));
+  });
+  mobile?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      mobile.classList.remove('is-open');
+      burger?.setAttribute('aria-expanded', 'false');
+    })
+  );
+</script>

@@ -1,0 +1,59 @@
+---
+import { t } from '../data/i18n';
+const qa = [
+  ['faq.q1', 'faq.a1'],
+  ['faq.q2', 'faq.a2'],
+  ['faq.q3', 'faq.a3'],
+  ['faq.q4', 'faq.a4'],
+  ['faq.q5', 'faq.a5'],
+  ['faq.q6', 'faq.a6'],
+];
+---
+
+<section class="section hairline-top" id="faq">
+  <div class="container faq">
+    <div class="section-head faq__head" data-reveal>
+      <span class="eyebrow" data-i18n="faq.eyebrow">{t('faq.eyebrow')}</span>
+      <h2 class="h-section" data-i18n="faq.title">{t('faq.title')}</h2>
+    </div>
+    <div class="faq__list">
+      {qa.map(([q, a], i) => (
+        <details class="faq__item" data-reveal style={`--d:${i * 0.04}s`} open={i === 0}>
+          <summary class="faq__q">
+            <span data-i18n={q}>{t(q)}</span>
+            <span class="faq__ic" aria-hidden="true"></span>
+          </summary>
+          <p class="faq__a" data-i18n={a}>{t(a)}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .faq__list { display: flex; flex-direction: column; }
+  .faq__item {
+    border-top: 1px solid var(--border);
+    transition-delay: var(--d, 0s);
+  }
+  .faq__item:last-child { border-bottom: 1px solid var(--border); }
+  .faq__q {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 22px 4px; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em;
+  }
+  .faq__q::-webkit-details-marker { display: none; }
+  .faq__ic { position: relative; width: 16px; height: 16px; flex: none; }
+  .faq__ic::before, .faq__ic::after {
+    content: ''; position: absolute; background: var(--accent-bright); border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .faq__ic::before { top: 7px; left: 0; width: 16px; height: 2px; }
+  .faq__ic::after { top: 0; left: 7px; width: 2px; height: 16px; }
+  .faq__item[open] .faq__ic::after { transform: rotate(90deg); opacity: 0; }
+  .faq__a {
+    padding: 0 4px 24px; color: var(--text-2); font-size: 0.98rem; line-height: 1.65; max-width: 78ch;
+  }
+  @media (min-width: 860px) { .faq { grid-template-columns: 300px 1fr; gap: 40px; align-items: start; } .faq__head { margin-bottom: 0; } }
+</style>

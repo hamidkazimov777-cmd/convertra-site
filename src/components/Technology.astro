@@ -1,0 +1,65 @@
+---
+import { t } from '../data/i18n';
+
+const icons: Record<string, string> = {
+  key: '<path d="M15 7a5 5 0 1 1-4.9 6H7v3H4v-3H2v-3h8.1A5 5 0 0 1 15 7Z"/><circle cx="15" cy="12" r="1.6" fill="currentColor" stroke="none"/>',
+  tempo: '<path d="M12 2 5 20h14L12 2Z"/><path d="M12 8v7"/><circle cx="12" cy="18" r="1.4" fill="currentColor" stroke="none"/>',
+  camelot: '<circle cx="12" cy="12" r="9"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3"/>',
+  pipeline: '<path d="M3 12h4l3-7 4 14 3-7h4"/>',
+  perf: '<path d="M3 17l5-5 4 4 8-8"/><path d="M21 8v5h-5"/>',
+  delivery: '<path d="M4 7l8-4 8 4v10l-8 4-8-4Z"/><path d="M4 7l8 4 8-4M12 11v10"/>',
+};
+
+const cards = [
+  ['key', 'tech.key.title', 'tech.key.body'],
+  ['tempo', 'tech.tempo.title', 'tech.tempo.body'],
+  ['camelot', 'tech.camelot.title', 'tech.camelot.body'],
+  ['pipeline', 'tech.pipeline.title', 'tech.pipeline.body'],
+  ['perf', 'tech.perf.title', 'tech.perf.body'],
+  ['delivery', 'tech.delivery.title', 'tech.delivery.body'],
+];
+---
+
+<section class="section hairline-top" id="technology">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-i18n="tech.eyebrow">{t('tech.eyebrow')}</span>
+      <h2 class="h-section" data-i18n="tech.title">{t('tech.title')}</h2>
+      <p class="lead" data-i18n="tech.subtitle">{t('tech.subtitle')}</p>
+    </div>
+
+    <div class="grid">
+      {cards.map(([icon, title, body], i) => (
+        <article class="card tech" data-reveal style={`--d:${i * 0.05}s`}>
+          <span class="tech__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={icons[icon]} />
+          </span>
+          <h3 class="tech__title" data-i18n={title}>{t(title)}</h3>
+          <p class="tech__body" data-i18n={body}>{t(body)}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .tech { transition-delay: var(--d, 0s); }
+  .tech__icon {
+    display: inline-grid; place-items: center;
+    width: 46px; height: 46px; border-radius: 12px;
+    color: var(--accent-bright);
+    background: rgba(103, 108, 244, 0.12);
+    border: 1px solid rgba(103, 108, 244, 0.28);
+    margin-bottom: 18px;
+  }
+  .tech__title { font-size: 1.16rem; letter-spacing: -0.02em; }
+  .tech__body { margin-top: 10px; color: var(--text-2); font-size: 0.95rem; line-height: 1.55; }
+
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 980px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

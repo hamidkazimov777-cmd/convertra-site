@@ -1,0 +1,104 @@
+---
+import { t } from '../data/i18n';
+
+// yes | no | partial | custom-text-key
+const rows = [
+  ['cmp.row.ondevice', 'yes', 'no', 'yes'],
+  ['cmp.row.license', 'yes', 'no', 'no'],
+  ['cmp.row.whitelabel', 'yes', 'no', 'no'],
+  ['cmp.row.camelot', 'yes', 'yes', 'yes'],
+  ['cmp.row.nonn', 'yes', 'partial', 'partial'],
+  ['cmp.row.footprint', 'cmp.val.core.footprint', 'cmp.val.na', 'cmp.val.bundled'],
+];
+const cols = ['cmp.col.core', 'cmp.col.mik', 'cmp.col.rb'];
+
+function cell(v: string) {
+  if (v === 'yes') return { type: 'icon', cls: 'yes', i18n: null };
+  if (v === 'no') return { type: 'icon', cls: 'no', i18n: null };
+  if (v === 'partial') return { type: 'icon', cls: 'partial', i18n: null };
+  return { type: 'text', cls: '', i18n: v };
+}
+---
+
+<section class="section hairline-top" id="compare">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-i18n="cmp.eyebrow">{t('cmp.eyebrow')}</span>
+      <h2 class="h-section" data-i18n="cmp.title">{t('cmp.title')}</h2>
+      <p class="lead" data-i18n="cmp.subtitle">{t('cmp.subtitle')}</p>
+    </div>
+
+    <div class="cmp-wrap" data-reveal>
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n="cmp.col.feature">{t('cmp.col.feature')}</th>
+            {cols.map((c, i) => (
+              <th scope="col" class={i === 0 ? 'is-core' : ''}>
+                <span data-i18n={c}>{t(c)}</span>
+                {i === 0 && <span class="cmp__star" aria-hidden="true">★</span>}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr>
+              <th scope="row" data-i18n={row[0]}>{t(row[0])}</th>
+              {row.slice(1).map((v, i) => {
+                const c = cell(v);
+                return (
+                  <td class={i === 0 ? 'is-core' : ''}>
+                    {c.type === 'icon' ? (
+                      <span class={`mk mk--${c.cls}`} aria-label={c.cls}>
+                        {c.cls === 'yes' && '✓'}
+                        {c.cls === 'no' && '—'}
+                        {c.cls === 'partial' && '~'}
+                      </span>
+                    ) : (
+                      <span class="cmp__txt" data-i18n={c.i18n!}>{t(c.i18n!)}</span>
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp__note" data-reveal data-i18n="cmp.note">{t('cmp.note')}</p>
+  </div>
+</section>
+
+<style>
+  .cmp-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-1);
+    -webkit-overflow-scrolling: touch;
+  }
+  .cmp { width: 100%; border-collapse: collapse; min-width: 640px; }
+  .cmp th, .cmp td { padding: 16px 18px; text-align: center; font-size: 0.9rem; }
+  .cmp thead th { font-weight: 600; color: var(--text-2); border-bottom: 1px solid var(--border); position: relative; }
+  .cmp tbody th[scope='row'] { text-align: left; font-weight: 500; color: var(--text); }
+  .cmp tbody tr + tr th, .cmp tbody tr + tr td { border-top: 1px solid var(--border-subtle); }
+  .cmp .is-core {
+    background: rgba(103, 108, 244, 0.09);
+    color: #fff;
+  }
+  thead th.is-core { color: #fff; }
+  .cmp__star { color: var(--energy); margin-left: 6px; font-size: 0.8rem; }
+  .cmp__txt { font-family: var(--mono); font-size: 0.84rem; color: var(--text-2); }
+  td.is-core .cmp__txt { color: #fff; font-weight: 600; }
+
+  .mk {
+    display: inline-grid; place-items: center;
+    width: 26px; height: 26px; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+  }
+  .mk--yes { color: var(--ok); background: rgba(74,222,128,0.14); }
+  .mk--no { color: var(--text-3); background: rgba(255,255,255,0.04); }
+  .mk--partial { color: var(--energy); background: rgba(239,168,49,0.14); }
+
+  .cmp__note { margin-top: 16px; font-size: 0.82rem; color: var(--text-3); line-height: 1.5; max-width: 80ch; }
+</style>

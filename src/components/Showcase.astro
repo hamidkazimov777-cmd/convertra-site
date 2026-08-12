@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import { t } from '../data/i18n';
+import libraryImg from '../assets/app-library.png';
+import metadataImg from '../assets/app-metadata.png';
+import conversionImg from '../assets/app-conversion.png';
+
+const features = [
+  ['show.library.title', 'show.library.body'],
+  ['show.metadata.title', 'show.metadata.body'],
+  ['show.conversion.title', 'show.conversion.body'],
+];
+---
+
+<section class="section hairline-top" id="product">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-i18n="show.eyebrow">{t('show.eyebrow')}</span>
+      <h2 class="h-section" data-i18n="show.title">{t('show.title')}</h2>
+      <p class="lead" data-i18n="show.subtitle">{t('show.subtitle')}</p>
+    </div>
+
+    <figure class="shot shot--hero" data-reveal>
+      <div class="shot__frame">
+        <Image src={libraryImg} alt={t('show.caption.library')} widths={[720, 1160, 1920]} sizes="(min-width: 980px) 1100px, 100vw" loading="eager" />
+      </div>
+      <figcaption class="shot__cap" data-i18n="show.caption.library">{t('show.caption.library')}</figcaption>
+    </figure>
+
+    <div class="show__grid">
+      <figure class="shot" data-reveal>
+        <div class="shot__frame">
+          <Image src={metadataImg} alt={t('show.caption.metadata')} widths={[560, 900]} sizes="(min-width: 760px) 540px, 100vw" loading="lazy" />
+        </div>
+        <figcaption class="shot__cap" data-i18n="show.caption.metadata">{t('show.caption.metadata')}</figcaption>
+      </figure>
+      <figure class="shot" data-reveal style="--d:.06s">
+        <div class="shot__frame">
+          <Image src={conversionImg} alt={t('show.caption.conversion')} widths={[560, 900]} sizes="(min-width: 760px) 540px, 100vw" loading="lazy" />
+        </div>
+        <figcaption class="shot__cap" data-i18n="show.caption.conversion">{t('show.caption.conversion')}</figcaption>
+      </figure>
+    </div>
+
+    <div class="show__features">
+      {features.map(([title, body], i) => (
+        <div class="show__feat" data-reveal style={`--d:${i * 0.05}s`}>
+          <span class="show__num">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="show__ftitle" data-i18n={title}>{t(title)}</h3>
+          <p class="show__fbody" data-i18n={body}>{t(body)}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .shot { transition-delay: var(--d, 0s); }
+  .shot__frame {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+    box-shadow: 0 40px 90px -40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .shot__frame img { width: 100%; display: block; }
+  .shot__cap {
+    margin-top: 12px; font-size: 0.82rem; color: var(--text-3);
+    font-family: var(--mono); letter-spacing: 0;
+  }
+  .shot--hero { margin-bottom: 16px; }
+
+  .show__grid {
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+  }
+  .show__features {
+    display: grid; grid-template-columns: 1fr; gap: 26px;
+    margin-top: clamp(40px, 6vw, 64px);
+    padding-top: clamp(36px, 5vw, 52px);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .show__feat { transition-delay: var(--d, 0s); }
+  .show__num {
+    font-family: var(--mono); font-size: 0.8rem; font-weight: 600;
+    color: var(--accent-bright);
+  }
+  .show__ftitle { margin-top: 10px; font-size: 1.1rem; }
+  .show__fbody { margin-top: 8px; color: var(--text-2); font-size: 0.93rem; line-height: 1.55; }
+
+  @media (min-width: 760px) { .show__grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 900px) { .show__features { grid-template-columns: repeat(3, 1fr); gap: 34px; } }
+</style>

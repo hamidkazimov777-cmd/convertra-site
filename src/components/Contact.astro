@@ -1,0 +1,90 @@
+---
+import { t } from '../data/i18n';
+import { founder, inquiries } from '../data/site';
+
+const ctas = [
+  ['contact.cta.buy.title', 'contact.cta.buy.body', inquiries.acquisition],
+  ['contact.cta.license.title', 'contact.cta.license.body', inquiries.license],
+  ['contact.cta.partner.title', 'contact.cta.partner.body', inquiries.partnership],
+  ['contact.cta.invest.title', 'contact.cta.invest.body', inquiries.investment],
+];
+
+const channels = [
+  ['Telegram', `@${founder.telegram}`, founder.telegramUrl],
+  ['WhatsApp', founder.whatsapp, founder.whatsappUrl],
+  ['LinkedIn', 'hamid-kazimov', founder.linkedin],
+  ['GitHub', 'hamidkazimov777-cmd', founder.github],
+];
+---
+
+<section class="section hairline-top" id="contact">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-i18n="contact.eyebrow">{t('contact.eyebrow')}</span>
+      <h2 class="h-section" data-i18n="contact.title">{t('contact.title')}</h2>
+      <p class="lead" data-i18n="contact.subtitle">{t('contact.subtitle')}</p>
+    </div>
+
+    <div class="ct__ctas">
+      {ctas.map(([title, body, href], i) => (
+        <a class="card ct__cta" href={href} data-reveal style={`--d:${i * 0.05}s`}>
+          <h3 class="ct__ctaTitle" data-i18n={title}>{t(title)}</h3>
+          <p class="ct__ctaBody" data-i18n={body}>{t(body)}</p>
+          <span class="ct__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <div class="ct__direct card" data-reveal>
+      <div class="ct__email">
+        <span class="ct__label" data-i18n="contact.reach">{t('contact.reach')}</span>
+        <a class="ct__emailLink" href={`mailto:${founder.email}`}>{founder.email}</a>
+      </div>
+      <div class="ct__channels">
+        {channels.map(([label, handle, href]) => (
+          <a class="ct__chan" href={href} target="_blank" rel="noopener">
+            <span class="ct__chanLabel">{label}</span>
+            <span class="ct__chanHandle">{handle}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ct__ctas { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .ct__cta { display: block; position: relative; padding-right: 52px; transition-delay: var(--d, 0s); }
+  .ct__cta:hover { border-color: rgba(103,108,244,0.5); }
+  .ct__cta:hover .ct__arrow { color: var(--accent-bright); transform: translate(2px, -2px); }
+  .ct__ctaTitle { font-size: 1.15rem; }
+  .ct__ctaBody { margin-top: 8px; color: var(--text-2); font-size: 0.92rem; line-height: 1.5; }
+  .ct__arrow { position: absolute; top: 24px; right: 22px; color: var(--text-3); transition: color 0.2s ease, transform 0.2s ease; }
+
+  .ct__direct {
+    margin-top: 16px;
+    display: grid; grid-template-columns: 1fr; gap: 26px;
+    padding: 30px;
+  }
+  .ct__label { font-size: 0.8rem; color: var(--text-3); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ct__emailLink { display: block; margin-top: 8px; font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 600; letter-spacing: -0.02em; color: #fff; }
+  .ct__emailLink:hover { color: var(--accent-bright); }
+  .ct__channels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .ct__chan {
+    display: flex; flex-direction: column; gap: 3px;
+    padding: 13px 16px; border-radius: 12px;
+    border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+    transition: border-color 0.18s ease, background 0.18s ease;
+  }
+  .ct__chan:hover { border-color: rgba(103,108,244,0.4); background: rgba(103,108,244,0.08); }
+  .ct__chanLabel { font-size: 0.74rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .ct__chanHandle { font-size: 0.9rem; color: var(--text); font-family: var(--mono); }
+
+  @media (min-width: 680px) { .ct__ctas { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) {
+    .ct__direct { grid-template-columns: 1fr 1fr; align-items: center; }
+    .ct__channels { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>

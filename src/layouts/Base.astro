@@ -1,0 +1,178 @@
+---
+import '../styles/global.css';
+import { translations, DEFAULT_LOCALE, t } from '../data/i18n';
+import { founder } from '../data/site';
+
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://convertra.pages.dev';
+const ogImage = `${site}/og-image.png`;
+const title = t('meta.title');
+const description = t('meta.description');
+
+// Structured data — the engine as a product + the founder + the app.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site}/#org`,
+      name: 'Convertra',
+      url: site,
+      logo: `${site}/icon-512.png`,
+      founder: { '@type': 'Person', name: founder.name },
+      sameAs: [founder.linkedin, founder.github, founder.telegramUrl],
+    },
+    {
+      '@type': 'Product',
+      '@id': `${site}/#audiocore`,
+      name: 'Convertra AudioCore',
+      brand: { '@id': `${site}/#org` },
+      category: 'Audio analysis DSP engine / SDK',
+      description:
+        'Proprietary, 100% on-device DSP engine for musical key, tempo (BPM) and Camelot detection. Delivered as a signed universal .xcframework for licensing, white-label integration or acquisition.',
+      url: `${site}/#technology`,
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Convertra',
+      applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'macOS 12+',
+      description:
+        'Native macOS library, analysis and conversion app for DJs, powered by Convertra AudioCore.',
+      offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0c0f" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={founder.name} />
+    <link rel="canonical" href={site + '/'} />
+    <meta
+      name="keywords"
+      content="key detection, BPM detection, Camelot, harmonic mixing, DSP engine, audio analysis SDK, Mixed In Key alternative, DJ software SDK, on-device audio analysis, white label audio engine, license, AudioCore"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Convertra AudioCore" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site + '/'} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ru_RU" />
+    <meta property="og:locale:alternate" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Preload primary font weights -->
+    <link rel="preload" href="/fonts/Inter-Regular.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/Inter-SemiBold.otf" as="font" type="font/otf" crossorigin />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- No-JS fallback: never leave reveal content hidden -->
+    <noscript>
+      <style>[data-reveal]{opacity:1 !important;transform:none !important;}</style>
+    </noscript>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+    <slot />
+
+    <!-- i18n dictionaries for the client toggle -->
+    <script type="application/json" id="i18n-data" set:html={JSON.stringify(translations)} />
+
+    <script>
+      type Dict = Record<string, string>;
+      const DATA = JSON.parse(
+        document.getElementById('i18n-data')?.textContent || '{}'
+      ) as Record<string, Dict>;
+      const LOCALES = ['en', 'ru', 'es'] as const;
+      type Loc = (typeof LOCALES)[number];
+
+      function pick(): Loc {
+        const saved = localStorage.getItem('convertra-lang') as Loc | null;
+        if (saved && LOCALES.includes(saved)) return saved;
+        const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+        return (LOCALES as readonly string[]).includes(nav) ? (nav as Loc) : 'en';
+      }
+
+      function apply(loc: Loc) {
+        const dict = DATA[loc] || DATA.en;
+        document.documentElement.lang = loc;
+        // text nodes
+        document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n')!;
+          if (dict[key] != null) el.textContent = dict[key];
+        });
+        // attributes: data-i18n-attr="aria-label:some.key;content:other.key"
+        document.querySelectorAll<HTMLElement>('[data-i18n-attr]').forEach((el) => {
+          el.getAttribute('data-i18n-attr')!
+            .split(';')
+            .forEach((pair) => {
+              const [attr, key] = pair.split(':').map((s) => s.trim());
+              if (attr && key && dict[key] != null) el.setAttribute(attr, dict[key]);
+            });
+        });
+        // toggle active state
+        document.querySelectorAll<HTMLButtonElement>('[data-lang]').forEach((b) => {
+          const on = b.getAttribute('data-lang') === loc;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+        localStorage.setItem('convertra-lang', loc);
+      }
+
+      const initial = pick();
+      apply(initial);
+      document.querySelectorAll<HTMLButtonElement>('[data-lang]').forEach((b) => {
+        b.addEventListener('click', () => apply(b.getAttribute('data-lang') as Loc));
+      });
+
+      // reveal on scroll
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+
+      // nav elevation on scroll
+      const nav = document.querySelector('[data-nav]');
+      const onScroll = () => nav?.classList.toggle('is-scrolled', window.scrollY > 12);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    </script>
+  </body>
+</html>

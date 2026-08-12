@@ -1,0 +1,150 @@
+---
+import { t } from '../data/i18n';
+import { inquiries } from '../data/site';
+
+const metrics = [
+  ['metric.key.value', 'metric.key.label'],
+  ['metric.harmonic.value', 'metric.harmonic.label'],
+  ['metric.bpm.value', 'metric.bpm.label'],
+  ['metric.speed.value', 'metric.speed.label'],
+  ['metric.device.value', 'metric.device.label'],
+];
+
+// Camelot wheel — 12 hours, inner (minor / A) + outer (major / B) rings.
+const camelotColors = [
+  '#4ee0c0', '#59d98a', '#8ed86a', '#c9d95a', '#f2c94c', '#f2a34c',
+  '#ef6f6f', '#e86ab0', '#c06cf0', '#8a7bf0', '#5a86f0', '#4bb6ea',
+];
+const N = 12;
+const cx = 150, cy = 150;
+function ring(i: number, rOuter: number, rInner: number) {
+  const a0 = (i / N) * 2 * Math.PI - Math.PI / 2 - Math.PI / N;
+  const a1 = ((i + 1) / N) * 2 * Math.PI - Math.PI / 2 - Math.PI / N;
+  const p = (r: number, a: number) => `${cx + r * Math.cos(a)} ${cy + r * Math.sin(a)}`;
+  const large = 0;
+  return `M ${p(rInner, a0)} L ${p(rOuter, a0)} A ${rOuter} ${rOuter} 0 ${large} 1 ${p(rOuter, a1)} L ${p(rInner, a1)} A ${rInner} ${rInner} 0 ${large} 0 ${p(rInner, a0)} Z`;
+}
+function labelPos(i: number, r: number) {
+  const a = (i / N) * 2 * Math.PI - Math.PI / 2;
+  return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+}
+---
+
+<section class="hero" id="top">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow" data-reveal data-i18n="hero.eyebrow">{t('hero.eyebrow')}</span>
+      <h1 class="h-display" data-reveal style="--d:.05s" data-i18n="hero.title">{t('hero.title')}</h1>
+      <p class="lead" data-reveal style="--d:.1s" data-i18n="hero.subtitle">{t('hero.subtitle')}</p>
+      <div class="hero__cta" data-reveal style="--d:.15s">
+        <a class="btn btn-primary" href={inquiries.license} data-i18n="hero.cta.primary">{t('hero.cta.primary')}</a>
+        <a class="btn btn-ghost" href="#performance" data-i18n="hero.cta.secondary">{t('hero.cta.secondary')}</a>
+      </div>
+      <p class="hero__note" data-reveal style="--d:.2s" data-i18n="hero.note">{t('hero.note')}</p>
+    </div>
+
+    <div class="hero__visual" data-reveal style="--d:.12s" aria-hidden="true">
+      <div class="wheel-card">
+        <svg viewBox="0 0 300 300" class="wheel" role="img" aria-label="Camelot wheel">
+          {camelotColors.map((c, i) => (
+            <path d={ring(i, 138, 104)} fill={c} opacity="0.92" stroke="#0b0c0f" stroke-width="2" />
+          ))}
+          {camelotColors.map((c, i) => (
+            <path d={ring(i, 100, 66)} fill={c} opacity="0.55" stroke="#0b0c0f" stroke-width="2" />
+          ))}
+          {camelotColors.map((_, i) => {
+            const o = labelPos(i, 121);
+            const inr = labelPos(i, 83);
+            return (
+              <>
+                <text x={o.x} y={o.y} class="wheel__lbl" dy="0.34em">{`${i + 1}B`}</text>
+                <text x={inr.x} y={inr.y} class="wheel__lbl wheel__lbl--in" dy="0.34em">{`${i + 1}A`}</text>
+              </>
+            );
+          })}
+          <circle cx="150" cy="150" r="58" fill="#0b0c0f" stroke="rgba(255,255,255,0.12)" />
+          <text x="150" y="142" class="wheel__core">8A</text>
+          <text x="150" y="166" class="wheel__coreSub">128.0 BPM</text>
+        </svg>
+        <div class="wheel-card__badge">
+          <span class="dot"></span> on-device · vDSP
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="metrics" data-reveal>
+      {metrics.map(([v, l]) => (
+        <div class="metric">
+          <div class="metric__v text-grad" data-i18n={v}>{t(v)}</div>
+          <div class="metric__l" data-i18n={l}>{t(l)}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding-top: 128px; padding-bottom: clamp(40px, 6vw, 72px); position: relative; }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(40px, 6vw, 64px);
+    align-items: center;
+  }
+  .hero__copy > * + * { margin-top: 22px; }
+  .hero [data-reveal] { transition-delay: var(--d, 0s); }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .hero__note { font-size: 0.86rem; color: var(--text-3); font-family: var(--mono); letter-spacing: 0; }
+
+  .hero__visual { display: flex; justify-content: center; }
+  .wheel-card {
+    position: relative;
+    width: min(420px, 88vw);
+    aspect-ratio: 1;
+    border-radius: 28px;
+    display: grid; place-items: center;
+    background:
+      radial-gradient(120% 120% at 30% 15%, rgba(103,108,244,0.18), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+    border: 1px solid var(--border);
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .wheel { width: 82%; height: 82%; filter: drop-shadow(0 12px 30px rgba(103,108,244,0.25)); animation: spin 120s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .wheel { animation: none; } }
+  .wheel__lbl { fill: #0b0c0f; font-size: 12px; font-weight: 700; text-anchor: middle; font-family: var(--font); }
+  .wheel__lbl--in { fill: rgba(255,255,255,0.92); font-size: 10.5px; }
+  .wheel__core { fill: #fff; font-size: 26px; font-weight: 700; text-anchor: middle; font-family: var(--font); }
+  .wheel__coreSub { fill: var(--accent-muted); font-size: 11px; font-weight: 600; text-anchor: middle; font-family: var(--mono); }
+  .wheel-card__badge {
+    position: absolute; bottom: 16px; left: 16px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.74rem; font-weight: 500; color: var(--text-2);
+    padding: 7px 12px; border-radius: 999px;
+    background: rgba(0,0,0,0.45); border: 1px solid var(--border);
+    font-family: var(--mono);
+  }
+  .wheel-card__badge .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--ok); box-shadow: 0 0 10px 1px rgba(74,222,128,0.8); }
+
+  .metrics {
+    margin-top: clamp(40px, 6vw, 68px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .metric { background: var(--bg-1); padding: 22px 20px; }
+  .metric__v { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .metric__l { margin-top: 8px; font-size: 0.82rem; color: var(--text-2); line-height: 1.35; }
+
+  @media (min-width: 620px) { .metrics { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 960px) {
+    .hero__inner { grid-template-columns: 1.05fr 0.95fr; }
+    .metrics { grid-template-columns: repeat(5, 1fr); }
+  }
+</style>

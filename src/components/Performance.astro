@@ -1,0 +1,97 @@
+---
+import { t } from '../data/i18n';
+
+const bars = [
+  ['metric.harmonic.value', 'metric.harmonic.label', 83, 'var(--ok)'],
+  ['metric.bpm.value', 'metric.bpm.label', 82, 'var(--accent-bright)'],
+  ['metric.key.value', 'metric.key.label', 70, 'var(--energy)'],
+];
+
+const points = [
+  ['perf.point.ondevice.title', 'perf.point.ondevice.body'],
+  ['perf.point.scale.title', 'perf.point.scale.body'],
+  ['perf.point.native.title', 'perf.point.native.body'],
+];
+---
+
+<section class="section hairline-top" id="performance">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-i18n="perf.eyebrow">{t('perf.eyebrow')}</span>
+      <h2 class="h-section" data-i18n="perf.title">{t('perf.title')}</h2>
+      <p class="lead" data-i18n="perf.subtitle">{t('perf.subtitle')}</p>
+    </div>
+
+    <div class="perf">
+      <div class="card perf__chart" data-reveal>
+        <div class="perf__bars">
+          {bars.map(([v, l, pct, color]) => (
+            <div class="bar">
+              <div class="bar__head">
+                <span class="bar__label" data-i18n={l as string}>{t(l as string)}</span>
+                <span class="bar__val" data-i18n={v as string}>{t(v as string)}</span>
+              </div>
+              <div class="bar__track">
+                <span class="bar__fill" style={`--pct:${pct}%;--c:${color}`}></span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="perf__method">
+          <h3 class="perf__methodTitle" data-i18n="perf.method.title">{t('perf.method.title')}</h3>
+          <p class="perf__methodBody" data-i18n="perf.method.body">{t('perf.method.body')}</p>
+          <div class="perf__tags">
+            <span class="chip">111 tracks</span>
+            <span class="chip">Mixed In Key ground truth</span>
+            <span class="chip">~1s / track · release</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="perf__points">
+        {points.map(([title, body], i) => (
+          <article class="card perf__point" data-reveal style={`--d:${i * 0.06}s`}>
+            <h3 class="perf__pTitle" data-i18n={title}>{t(title)}</h3>
+            <p class="perf__pBody" data-i18n={body}>{t(body)}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .perf { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .perf__point, .perf__point.card { transition-delay: var(--d, 0s); }
+  .perf__chart { display: flex; flex-direction: column; gap: 28px; padding: 30px; }
+  .perf__bars { display: flex; flex-direction: column; gap: 20px; }
+  .bar__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9px; }
+  .bar__label { font-size: 0.9rem; color: var(--text-2); }
+  .bar__val { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; }
+  .bar__track { height: 10px; border-radius: 999px; background: rgba(255,255,255,0.06); overflow: hidden; }
+  .bar__fill {
+    display: block; height: 100%; width: var(--pct);
+    border-radius: 999px;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--c) 55%, transparent), var(--c));
+    box-shadow: 0 0 16px -2px var(--c);
+    transform-origin: left;
+    animation: grow 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .bar__fill { animation: none; } }
+
+  .perf__method { border-top: 1px solid var(--border-subtle); padding-top: 22px; }
+  .perf__methodTitle { font-size: 1.02rem; }
+  .perf__methodBody { margin-top: 8px; color: var(--text-2); font-size: 0.9rem; line-height: 1.55; }
+  .perf__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+  .perf__points { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  .perf__pTitle { font-size: 1.08rem; }
+  .perf__pBody { margin-top: 9px; color: var(--text-2); font-size: 0.92rem; line-height: 1.5; }
+
+  @media (min-width: 700px) { .perf__points { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 980px) {
+    .perf { grid-template-columns: 1.35fr 1fr; align-items: start; }
+    .perf__points { grid-template-columns: 1fr; }
+  }
+</style>
