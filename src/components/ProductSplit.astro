@@ -5,8 +5,9 @@ import { inquiries } from '../data/site';
 const products = [
   {
     tag: 'split.app.tag', title: 'split.app.title', body: 'split.app.body', cta: 'split.app.cta',
-    href: '#product', inquiry: 'app', accent: 'app',
+    href: '#', inquiry: 'app', accent: 'app',
     icon: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 9h4M7 12h7"/>',
+    isDownload: true
   },
   {
     tag: 'split.core.tag', title: 'split.core.title', body: 'split.core.body', cta: 'split.core.cta',
@@ -35,7 +36,7 @@ const products = [
           </div>
           <h3 class="split__title" data-i18n={p.title}>{t(p.title)}</h3>
           <p class="split__body" data-i18n={p.body}>{t(p.body)}</p>
-          <a class="btn btn-primary split__cta js-cta" data-inquiry={p.inquiry} href={p.href}>
+          <a class={`btn btn-primary split__cta ${p.isDownload ? 'js-download' : 'js-cta'}`} data-inquiry={p.inquiry} href={p.href}>
             <span data-i18n={p.cta}>{t(p.cta)}</span>
             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>

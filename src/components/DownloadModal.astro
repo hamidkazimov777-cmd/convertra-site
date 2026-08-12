@@ -1,0 +1,138 @@
+---
+import { t } from '../data/i18n';
+---
+
+<div class="cm" id="download-modal" hidden>
+  <div class="cm__backdrop" data-download-close></div>
+  <div class="cm__dialog" role="dialog" aria-modal="true" aria-labelledby="dl-title">
+    <button class="cm__close" type="button" data-download-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <span class="cm__chip" data-i18n="modal.download.title">{t('modal.download.title')}</span>
+    <h3 class="cm__title" id="dl-title" data-i18n="modal.download.title">{t('modal.download.title')}</h3>
+    <p class="cm__sub" data-i18n="modal.download.body">{t('modal.download.body')}</p>
+    <p class="cm__req" data-i18n="modal.download.req">{t('modal.download.req')}</p>
+
+    <div class="cm__list">
+      <a class="cm__row cm__row--primary" href="https://dl.convertra.com/releases/mac/Convertra.zip" target="_blank" rel="noopener">
+        <span class="cm__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </span>
+        <span class="cm__meta">
+          <span class="cm__label" data-i18n="modal.download.cta">{t('modal.download.cta')}</span>
+          <span class="cm__handle">~5 MB</span>
+        </span>
+        <svg class="cm__arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+
+      <a class="cm__row" id="download-manual-link" href="https://dl.convertra.com/docs/en/Convertra_Guide_EN.pdf" target="_blank" rel="noopener">
+        <span class="cm__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </span>
+        <span class="cm__meta">
+          <span class="cm__label" data-i18n="modal.download.manual">{t('modal.download.manual')}</span>
+          <span class="cm__handle" id="download-manual-lang">PDF (EN)</span>
+        </span>
+        <svg class="cm__arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cm { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; }
+  .cm[hidden] { display: none; }
+  .cm__backdrop {
+    position: absolute; inset: 0; background: rgba(9, 10, 13, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .cm.is-open .cm__backdrop { opacity: 1; }
+  .cm__dialog {
+    position: relative; width: 100%; max-width: 440px; background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: var(--radius-xl); padding: 36px 32px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8);
+    transform: translateY(20px) scale(0.96); opacity: 0; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  }
+  .cm.is-open .cm__dialog { transform: translateY(0) scale(1); opacity: 1; }
+  .cm__close {
+    position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%;
+    background: transparent; border: 0; color: var(--text-3); display: grid; place-items: center;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .cm__close:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+  .cm__chip { display: inline-block; padding: 6px 12px; font-size: 0.72rem; font-weight: 600; color: var(--accent-bright); background: rgba(103,108,244,0.12); border-radius: 999px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .cm__title { font-size: 1.6rem; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px; }
+  .cm__sub { color: var(--text-2); font-size: 0.95rem; line-height: 1.5; margin-bottom: 8px; }
+  .cm__req { color: var(--text-3); font-size: 0.85rem; margin-bottom: 24px; font-family: var(--mono); }
+  .cm__list { display: flex; flex-direction: column; gap: 8px; }
+  .cm__row {
+    display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: var(--radius-lg);
+    background: var(--bg-2); border: 1px solid var(--border-subtle); text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .cm__row:hover { background: rgba(255,255,255,0.04); border-color: var(--border); }
+  .cm__row--primary { background: linear-gradient(135deg, rgba(103,108,244,0.1), transparent); border-color: rgba(103,108,244,0.25); }
+  .cm__row--primary:hover { border-color: rgba(103,108,244,0.5); }
+  .cm__ic { width: 36px; height: 36px; display: grid; place-items: center; background: rgba(255,255,255,0.04); border-radius: 8px; color: var(--text-2); }
+  .cm__row--primary .cm__ic { color: var(--accent-bright); background: rgba(103,108,244,0.12); }
+  .cm__meta { display: flex; flex-direction: column; flex: 1; }
+  .cm__label { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+  .cm__handle { font-size: 0.78rem; color: var(--text-3); font-family: var(--mono); margin-top: 2px; }
+  .cm__arrow { color: var(--text-3); margin-left: auto; transition: transform 0.2s ease, color 0.2s ease; }
+  .cm__row:hover .cm__arrow { transform: translateX(3px); color: var(--text); }
+</style>
+
+<script>
+  const modal = document.getElementById('download-modal');
+  const manualLink = document.getElementById('download-manual-link') as HTMLAnchorElement;
+  const manualLang = document.getElementById('download-manual-lang');
+
+  const updateManualLink = () => {
+    const loc = document.documentElement.lang || 'en';
+    if (manualLink && manualLang) {
+      manualLink.href = `https://dl.convertra.com/docs/${loc}/Convertra_Guide_${loc.toUpperCase()}.pdf`;
+      manualLang.textContent = `PDF (${loc.toUpperCase()})`;
+    }
+  };
+
+  const openModal = () => {
+    updateManualLink();
+    modal?.removeAttribute('hidden');
+    // force layout
+    void modal?.offsetWidth;
+    modal?.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal?.classList.remove('is-open');
+    setTimeout(() => {
+      modal?.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }, 300);
+  };
+
+  document.querySelectorAll('.js-download').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  document.querySelectorAll('[data-download-close]').forEach(btn => {
+    btn.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  // Export so dynamically generated buttons can trigger it.
+  (window as any).convertraOpenDownload = openModal;
+</script>

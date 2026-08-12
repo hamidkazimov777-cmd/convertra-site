@@ -37,10 +37,8 @@ function labelPos(i: number, r: number) {
       <h1 class="h-display" data-reveal style="--d:.05s" data-i18n="hero.title">{t('hero.title')}</h1>
       <p class="lead" data-reveal style="--d:.1s" data-i18n="hero.subtitle">{t('hero.subtitle')}</p>
       <div class="hero__cta" data-reveal style="--d:.15s">
-        <a class="btn btn-primary hero__dyn" href={inquiries.license} data-dyn-cta aria-label={t('hero.cta.primary')}>
-          <span class="hero__dyn-text" data-dyn-text data-i18n="cta.license">{t('cta.license')}</span>
-        </a>
-        <a class="btn btn-ghost" href="#product" data-i18n="hero.cta.secondary">{t('hero.cta.secondary')}</a>
+        <button type="button" class="btn btn-primary js-download" data-i18n="hero.cta.primary">{t('hero.cta.primary')}</button>
+        <a class="btn btn-ghost" href="#technology" data-i18n="hero.cta.secondary">{t('hero.cta.secondary')}</a>
       </div>
       <p class="hero__note" data-reveal style="--d:.2s" data-i18n="hero.note">{t('hero.note')}</p>
     </div>
@@ -98,17 +96,7 @@ function labelPos(i: number, r: number) {
   .hero__copy > * + * { margin-top: 22px; }
   .hero [data-reveal] { transition-delay: var(--d, 0s); }
   .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-  /* Dynamic CTA: stable button, softly cross-fading label. */
-  .hero__dyn { position: relative; overflow: hidden; min-width: 220px; }
-  .hero__dyn-text {
-    display: inline-block;
-    transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
-  }
-  .hero__dyn.is-swapping .hero__dyn-text { opacity: 0; transform: translateY(-8px); }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__dyn-text { transition: none; }
-  }
+
   .hero__note { font-size: 0.86rem; color: var(--text-3); font-family: var(--mono); letter-spacing: 0; }
 
   .hero__visual { display: flex; justify-content: center; }
@@ -162,75 +150,3 @@ function labelPos(i: number, r: number) {
   }
 </style>
 
-<script is:inline>
-  (() => {
-    const btn = document.querySelector('[data-dyn-cta]');
-    const label = document.querySelector('[data-dyn-text]');
-    if (!btn || !label) return;
-
-    // Each rotating state: label key + what clicking it does right now.
-    const states = [
-      { key: 'cta.license', act: 'modal', arg: 'license' },
-      { key: 'cta.getapp', act: 'scroll', arg: '#product' },
-      { key: 'cta.explore', act: 'scroll', arg: '#technology' },
-      { key: 'cta.partner', act: 'modal', arg: 'partnership' },
-      { key: 'cta.integrate', act: 'modal', arg: 'license' },
-      { key: 'cta.download', act: 'scroll', arg: '#product' },
-    ];
-    let i = 0;
-    let paused = false;
-
-    const tt = (key) => {
-      const el = document.getElementById('i18n-data');
-      const D = el ? JSON.parse(el.textContent || '{}') : {};
-      const loc = document.documentElement.lang || 'en';
-      return (D[loc] && D[loc][key]) || (D.en && D.en[key]) || key;
-    };
-
-    function paint(idx, animate) {
-      const s = states[idx];
-      label.setAttribute('data-i18n', s.key);
-      btn.setAttribute('aria-label', tt(s.key));
-      btn.dataset.act = s.act;
-      btn.dataset.arg = s.arg;
-      if (animate) {
-        btn.classList.add('is-swapping');
-        setTimeout(() => {
-          label.textContent = tt(s.key);
-          btn.classList.remove('is-swapping');
-        }, 300);
-      } else {
-        label.textContent = tt(s.key);
-      }
-    }
-
-    paint(0, false);
-
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce) {
-      setInterval(() => {
-        if (paused || document.hidden) return;
-        i = (i + 1) % states.length;
-        paint(i, true);
-      }, 4000);
-      btn.addEventListener('mouseenter', () => (paused = true));
-      btn.addEventListener('mouseleave', () => (paused = false));
-      btn.addEventListener('focus', () => (paused = true));
-      btn.addEventListener('blur', () => (paused = false));
-    }
-
-    btn.addEventListener('click', (e) => {
-      const act = btn.dataset.act;
-      const arg = btn.dataset.arg;
-      if (act === 'modal') {
-        e.preventDefault();
-        if (typeof window.convertraOpenContact === 'function') window.convertraOpenContact(arg);
-        else window.location.href = btn.getAttribute('href');
-      } else if (act === 'scroll') {
-        e.preventDefault();
-        const target = document.querySelector(arg);
-        target && target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-      }
-    });
-  })();
-</script>
