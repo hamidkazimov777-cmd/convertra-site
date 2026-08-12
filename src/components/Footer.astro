@@ -15,10 +15,7 @@ const nav = [
     <div class="footer__brand">
       <a class="brand" href="#top" aria-label="Convertra">
         <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12a8 8 0 0 1 13.7-5.6L20 8" /><path d="M20 4v4h-4" />
-            <path d="M20 12a8 8 0 0 1-13.7 5.6L4 16" /><path d="M4 20v-4h4" />
-          </svg>
+          <img src="/favicon.svg" alt="" width="30" height="30" />
         </span>
         <span class="brand__word">Convertra</span>
       </a>
@@ -38,7 +35,8 @@ const nav = [
   .footer { padding-top: clamp(48px, 6vw, 72px); padding-bottom: 40px; background: var(--bg-base); }
   .footer__inner { display: grid; grid-template-columns: 1fr; gap: 30px; padding-bottom: 34px; }
   .footer .brand { display: inline-flex; align-items: center; gap: 10px; }
-  .footer .brand__mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; background: var(--grad-accent); }
+  .footer .brand__mark { width: 30px; height: 30px; border-radius: 7px; overflow: hidden; background: transparent; }
+  .footer .brand__mark img { width: 100%; height: 100%; display: block; }
   .footer .brand__word { font-weight: 600; font-size: 1rem; }
   .footer__tag { margin-top: 14px; color: var(--text-2); font-size: 0.9rem; max-width: 42ch; line-height: 1.55; }
   .footer__nav { display: flex; flex-wrap: wrap; gap: 20px; align-content: start; }
