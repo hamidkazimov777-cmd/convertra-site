@@ -104,15 +104,15 @@ function labelPos(i: number, r: number) {
     position: relative;
     width: min(420px, 88vw);
     aspect-ratio: 1;
-    border-radius: 28px;
+    border-radius: 6px;
     display: grid; place-items: center;
     background:
-      radial-gradient(120% 120% at 30% 15%, rgba(103,108,244,0.18), transparent 60%),
+      radial-gradient(120% 120% at 30% 15%, rgba(240, 160, 42,0.18), transparent 60%),
       linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
     border: 1px solid var(--border);
     box-shadow: 0 40px 80px -30px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
   }
-  .wheel { width: 82%; height: 82%; filter: drop-shadow(0 12px 30px rgba(103,108,244,0.25)); animation: spin 120s linear infinite; }
+  .wheel { width: 82%; height: 82%; filter: drop-shadow(0 12px 30px rgba(240, 160, 42,0.25)); animation: spin 120s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { .wheel { animation: none; } }
   .wheel__lbl { fill: #0b0c0f; font-size: 12px; font-weight: 700; text-anchor: middle; font-family: var(--font); }
@@ -123,11 +123,11 @@ function labelPos(i: number, r: number) {
     position: absolute; bottom: 16px; left: 16px;
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.74rem; font-weight: 500; color: var(--text-2);
-    padding: 7px 12px; border-radius: 999px;
+    padding: 7px 12px; border-radius: 3px;
     background: rgba(0,0,0,0.45); border: 1px solid var(--border);
     font-family: var(--mono);
   }
-  .wheel-card__badge .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--ok); box-shadow: 0 0 10px 1px rgba(74,222,128,0.8); }
+  .wheel-card__badge .dot { width: 7px; height: 7px; border-radius: 3px; background: var(--ok); box-shadow: 0 0 10px 1px rgba(74,222,128,0.8); }
 
   .metrics {
     margin-top: clamp(40px, 6vw, 68px);
