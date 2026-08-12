@@ -16,7 +16,7 @@ if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
 fi
 
 echo "Creating R2 bucket if it doesn't exist..."
-npx wrangler r2 bucket create $BUCKET_NAME --remote || true
+npx wrangler r2 bucket create $BUCKET_NAME || true
 
 echo "Uploading ZIP..."
 npx wrangler r2 object put "$BUCKET_NAME/releases/mac/Convertra.zip" --file "$DOWNLOADS_DIR/Convertra.zip" --remote
