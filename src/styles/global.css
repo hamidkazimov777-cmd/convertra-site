@@ -1,7 +1,7 @@
 /* =========================================================================
    Convertra AudioCore — design system
    Brand tokens lifted from the app (UI/Theme.swift):
-   graphite base #0B0C0F, violet accent #676CF4, amber energy #EFA831, Inter.
+   graphite base #0B0C0F, violet accent #676CF4, amber energy #31b465, Inter.
    Dark-first, bespoke — no UI kit.
    ========================================================================= */
 
@@ -45,12 +45,12 @@
   --bg-hover: #1e1f23;
 
   /* accent — amber / industrial (Technical Instrument identity) */
-  --accent: #f0a02a;
-  --accent-bright: #ffbf57;
-  --accent-deep: #cf7d1c;
-  --accent-hover: #ffbf57;
-  --accent-muted: #c99a5f;
-  --accent-rgb: 240, 160, 42;
+  --accent: #31b465;
+  --accent-bright: #4ade80;
+  --accent-deep: #228b49;
+  --accent-hover: #4ade80;
+  --accent-muted: #64b584;
+  --accent-rgb: 49, 180, 101;
 
   /* cool secondary — steel (used to set AudioCore apart from the App) */
   --steel: #8aa0c0;
@@ -58,8 +58,8 @@
   --steel-rgb: 138, 160, 192;
 
   /* energy — amber */
-  --energy: #efa831;
-  --energy-bright: #ffc24d;
+  --energy: #31b465;
+  --energy-bright: #4ade80;
 
   /* semantic */
   --ok: #4ade80;
@@ -144,7 +144,7 @@ a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
 
 ::selection {
-  background: rgba(240, 160, 42, 0.32);
+  background: rgba(49, 180, 101, 0.32);
   color: #fff;
 }
 

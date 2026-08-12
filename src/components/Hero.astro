@@ -107,12 +107,12 @@ function labelPos(i: number, r: number) {
     border-radius: 6px;
     display: grid; place-items: center;
     background:
-      radial-gradient(120% 120% at 30% 15%, rgba(240, 160, 42,0.18), transparent 60%),
+      radial-gradient(120% 120% at 30% 15%, rgba(49, 180, 101,0.18), transparent 60%),
       linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
     border: 1px solid var(--border);
     box-shadow: 0 40px 80px -30px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
   }
-  .wheel { width: 82%; height: 82%; filter: drop-shadow(0 12px 30px rgba(240, 160, 42,0.25)); animation: spin 120s linear infinite; }
+  .wheel { width: 82%; height: 82%; filter: drop-shadow(0 12px 30px rgba(49, 180, 101,0.25)); animation: spin 120s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { .wheel { animation: none; } }
   .wheel__lbl { fill: #0b0c0f; font-size: 12px; font-weight: 700; text-anchor: middle; font-family: var(--font); }
